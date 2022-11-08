@@ -1,0 +1,64 @@
+<!-- Student name: Terence Chu
+   Student number: 301220117 -->
+
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+
+<!-- Content for the Edit page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            
+            <h1><%= title %></h1>
+            
+            <form class="form" method="POST">
+                <div class="form-group">
+                    <label for="nameTextField" name="surveyName">Survey Name: <%= survey.surveyName %></label>
+                </div>
+
+                <div class="form-group">
+                    <label for="userNameTextField">Your Name:</label>
+                    <input type="text" class="form-control"
+                    id="userNameTextField"
+                    placeholder="User Name"
+                    name="userName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="q1TextField">Question 1: <%= survey.q1 %></label>
+                </div>
+
+                <div class="form-group">
+                    <input type = "radio" name = "optQ1" id = "optQ1" value=<%= survey.q1Opt1 %>>
+                    <label for="optQ1"><%= survey.q1Opt1 %></label>
+                </div>
+
+                <div class="form-group">
+                    <input type = "radio" name = "optQ1" id = "optQ2" value=<%= survey.q1Opt2 %>>
+                    <label for="optQ2"><%= survey.q1Opt2 %></label>
+                </div>
+
+                <div class="form-group">
+                    <input type = "radio" name = "optQ1" id = "optQ3" value=<%= survey.q1Opt3 %>>
+                    <label for="optQ3"><%= survey.q1Opt3 %></label>
+                </div>
+
+                <div class="form-group">
+                    <input type = "radio" name = "optQ1" id = "optQ4" value=<%= survey.q1Opt4 %>>
+                    <label for="optQ4"><%= survey.q1Opt4 %></label>
+                </div>
+
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Submit</button>
+
+                <a href="/survey-list" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> Cancel</a>                        
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ../partials/bottom_nav.ejs %>
+
+<%- include ../partials/footer.ejs %>

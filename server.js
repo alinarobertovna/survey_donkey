@@ -5,7 +5,7 @@
  */
 
 var app = require('./server/config/app');
-var debug = require('debug')('authentification_assignment:server');
+var debug = require('debug')('03-02:server');
 var http = require('http');
 
 /**
@@ -24,6 +24,7 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
+
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

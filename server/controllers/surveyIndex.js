@@ -1,4 +1,8 @@
+//Student name: Terence Chu
+//Student number: 301220117
+
 //Just logic - no routing
+
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
@@ -82,16 +86,7 @@ module.exports.processLoginPage = (req, res, next) => {
                 expiresIn: 604800 // 1 week
             });
 
-            /* TODO - Getting ready to convert to API
-            res.json({success: true, msg: 'User Logged in Successfully!', user: {
-                id: user._id,
-                displayName: user.displayName,
-                username: user.username,
-                email: user.email
-            }, token: authToken});
-            */
-
-            return res.redirect('/book-list');
+            return res.redirect('/survey-list');
         });
     })(req, res, next);
 }
@@ -117,11 +112,7 @@ module.exports.processRegisterPage = (req, res, next) => {
     //Instantiate a user object
     let newUser = new User({
         username: req.body.username,
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! COMMENT OUT AFTER ASSIGNMENT SUBMISSION
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DO NOT USER CLEAR TEXT PASSWORD
-        password: req.body.password, // (use this if password was clear text, but our password is going to be encrypted)
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DO NOT USER CLEAR TEXT PASSWORD
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! COMMENT OUT AFTER ASSIGNMENT SUBMISSION
+        //password: req.body.password (use this if password was clear text, but our password is going to be encrypted)
         email: req.body.email,
         displayName: req.body.displayName
     });
@@ -147,15 +138,8 @@ module.exports.processRegisterPage = (req, res, next) => {
         }
         else
         {
-            //If no error exists, then registration is successful
-            //Redirect the user and authenticate them
-
-            /* TODO - Getting ready to convert to API
-            res.json({success: true, msg: 'User Registered Successfully!'});
-            */
-
             return passport.authenticate('local')(req, res, () => {
-                res.redirect('/book-list')
+                res.redirect('/survey-list')
             });
         }
     });
