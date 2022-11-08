@@ -1,12 +1,10 @@
 
-/* Student: Alina Fadeeva
-  Student ID 301249589
-  Assignment 1 COMP 229 */
+
 
 /* Home page */
 .bgimage {
   height:100vh;
-  background: url('assets/images/cover.jpg');
+  background: url('assets/images/');
   background-size:cover;
   position:relative;
 }
@@ -35,122 +33,11 @@
 #abt-link:hover {color:aliceblue;}
 
 #logo {
-  width: 150px;
-  height: 120px;
-  border-radius: 20%;
+  width: 200px;
+  height: 150px;
+  border-radius: 5%;
 }
 
-
-/* About me  */
-
-.imageAboutPage {
-  width: 100%;
-  border-radius: 50%;
-}
-p {text-align: justify;}
-
-.mst {font-style: italic;}
-
-.msthead {margin-left: 210px;}
-
-#abt {margin-left: 310px;}
-
-#btn-cv {margin-left: 260px;}
-
-#prj-btn {margin-left: 300px;}
-
-/* Services */
-
-.servicesText.card {
-  height: 280px;
-  cursor: pointer;
-}
-
-.card-title {
-  text-align: center;
-}
-.card:hover .servicesIcon {
-  color: #353839;
-}
-.servicesText:hover {
-  border: 1px solid #353839;
-}
-#web-dev {
-  width: 50px;
-  height: 50px;
-  margin-left: 160px;
-}
-#contact-btn {
-  margin-left: 45%;
-}
-
-/* Projects */
-
-#srv-btn {margin-left: 550px;}
-
-#brain-games-pic {
-  width: 60%;
-  margin-left: 80px;
-}
-#portfolio-pic {
-  width: 60%;
-  margin-left: 80px;
-}
-#calc-pic {
-  width: 60%;
-  margin-left: 80px;
-}
-#git {
-  width: 45px;
-  height: 45px;
-  margin-left: 47%;
-  
-}
-
-/* Contact */
-
-#frm-title { margin-left: 860px;}
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-html,body {
-  padding:0;
-  margin:0;
-  color: black;
-}
-form {
- width:90%;
-  max-width:500px;
-  margin:15px auto;
-}
-input, textarea {
-  width:100%;
-  margin-bottom:10px;
-  border-radius:3px;
-  border: solid 0.5px #ccc;
-  padding:4px 7px;
-}
-
-#tel2 {
-  margin-right: 500px;
-}
-
-#submit-link {
-  text-decoration: none;
-  color:white;
-}
-
-#contact-head {margin-left: 860px;}
-#email-large-pic {
-  width: 10%;
-  height: 10%;
-  margin-top: -40em;
-  margin-left: 350px;
-  
-}
 
 /* Contact List Page */
 #contact_table {
