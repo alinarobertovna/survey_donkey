@@ -1,23 +1,24 @@
-<!--Header and CSS Section-->
-<%- include('partials/header.ejs') %>
+<!-- Homepage -->
+<%- include partials/header.ejs %>
 
-<!--Main Nav-->
-<%- include('partials/main_nav.ejs') %>
-    
-<!-- Main Content -->
-    <main>
-      <%- include('content/' + page + '.ejs'); %> 
-    </main>
-
-<!--Footer-->
-<footer>
-<%- include('partials/bottom_nav.ejs') %> 
-</footer>
-
-<!--Javascript Section-->
-<%- include('partials/scripts.ejs') %>
+<%- include partials/main_nav.ejs %>
 
 
 
+<!-- main banner -->
+<section class="bgimage" id="home">
+  <div class="container-fluid">
+      <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <br> <br> <br>
+          <a href="/home"><img src="assets/images/logo3.png" alt="logo" id="logo"></a>
+          <h2 class="hero_title">Welcome to Survey Donkey!</h2>
+          <p class="hero_desc"></p>
+      </div>
+      </div>
+      <button type="button" class="btn btn-outline-dark" id="abt-btn"><a href="/survey-list" id="abt-link">Create New Survey &rarr;</a></button>
+  </div>
+</section>
 
+<%- include partials/bottom_nav.ejs %>
 
+<%- include partials/footer.ejs %>

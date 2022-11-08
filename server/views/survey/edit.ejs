@@ -1,55 +1,86 @@
-<%- include('../partials/header.ejs') %>
+<!-- Student name: Terence Chu
+   Student number: 301220117 -->
 
-<!--Main Nav-->
-<%- include('../partials/main_nav.ejs') %>
+<%- include ../partials/header.ejs %>
 
-<!--Content for Add page-->
-<br> <br> <br>
+<%- include ../partials/main_nav.ejs %>
+
+<!-- Content for the Edit page -->
 <div class="container">
     <div class="row">
         <div class="offset-md-3 col-md-6">
-        <h1 class="text-center">Edit Survey</h1>
+            
+            <h1><%= title %></h1>
+            
+            <form class="form" method="POST">
+                <div class="form-group">
+                    <label for="nameTextField">Survey Name</label>
+                    <input type="text" class="form-control"
+                    id="nameTextField"
+                    placeholder="Name"
+                    value="<%= survey.surveyName %>"
+                    name="name" required>
+                </div>
 
-        <form class="form" method="POST">
-            <div class="form-group">
-                <label for="titleTextField">Title: </label>
-                <input type="text" class="form-control " id="titleTextField" placeholder="Enter Title" name="title" value="<%= survey.title %>" required>
-            </div>
-           
-            <div class="form-group">
-                <label for="descTextField">Description: </label>
-                <input type="text" class="form-control " id="descTextField" placeholder="Enter Survey Description" name="description" value="<%= survey.description %>" required>
-            </div>
-           
-            <div class="form-group">
-                <label for="startTextField">Start Date: </label>
-                <input type="text" class="form-control " id="startTextField" name="startDate" value="<%= survey.startDate %>" required>
-            </div>
+                <div class="form-group">
+                    <label for="q1TextField">Question 1</label>
+                    <input type="text" class="form-control"
+                    id="q1TestField"
+                    placeholder="Question 1"
+                    name="q1" 
+                    value="<%= survey.q1 %>"
+                    required>
+                </div>
 
-            <div class="form-group">
-                <label for="endTextField">End Date: </label>
-                <input type="text" class="form-control " id="endTextField" name="endDate" value="<%= survey.endDate %>" required>
-            </div>
+                <div class="form-group">
+                    <label for="q1Opt1TextField">Question 1 - Option 1</label>
+                    <input type="text" class="form-control"
+                    id="q1Opt1TextField"
+                    placeholder="Question 1 - Option 1"
+                    value="<%= survey.q1Opt1 %>"
+                    name="q1Opt1" required>
+                </div>
 
-            <div class="form-group">
-                <label for="statusTextField">Status: </label>
-                <input type="text" class="form-control " id="statusTextField" placeholder="Enter Status" name="status" value="<%= survey.status %>" required>
-            </div>
+                <div class="form-group">
+                    <label for="q1Opt2TextField">Question 1- Option 2</label>
+                    <input type="text" class="form-control"
+                    id="q1Opt2TextField"
+                    placeholder="Question 1- Option 2"
+                    value="<%= survey.q1Opt2 %>"
+                    name="q1Opt2" required>
+                </div>
 
-            <button class="btn btn-primary" type="submit">
-                <i class="fas fa-edit"></i> Submit </button>
+                <div class="form-group">
+                    <label for="q1Opt3TextField">Question 1 - Option 3</label>
+                    <input type="text" class="form-control"
+                    id="q1Opt3TextField"
+                    placeholder="Question 1 - Option 3"
+                    value="<%= survey.q1Opt3 %>"
+                    name="q1Opt3" required>
+                </div>
 
-            <a href="/survey-list" class="btn btn-warning"><i class="fas fa-undo"></i> Cancel </a>
+                <div class="form-group">
+                    <label for="q1Opt4TextField">Question 1 - Option 4</label>
+                    <input type="text" class="form-control"
+                    id="q1Opt4TextField"
+                    placeholder="Question 1 - Option 4"
+                    value="<%= survey.q1Opt4 %>"
+                    name="q1Opt4" required>
+                </div>
+             
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Submit</button>
 
-        </form>
-    </div>
+                <a href="/survey-list/delete/<%= survey.id %>" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i> Delete</a>
+
+                <a href="/survey-list" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> Cancel</a>                        
+            </form>
+        </div>
     </div>
 </div>
 
-<!--Footer-->
-<footer>
-    <%- include('../partials/bottom_nav.ejs') %> 
-</footer>
-    
-<!--Javascript Section-->
-<%- include('../partials/scripts.ejs') %>
+<%- include ../partials/bottom_nav.ejs %>
+
+<%- include ../partials/footer.ejs %>

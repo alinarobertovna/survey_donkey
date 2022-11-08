@@ -1,6 +1,6 @@
-module.exports  = 
+module.exports = 
 {
-    //"URI": "mongodb://localhost/book_store"
-    "URI": "mongodb+srv://alina:24CaFTmyCn9RBOhd@mongodbserver.lkhsa9n.mongodb.net/book_store?retryWrites=true&w=majority",
-    "Secret" : 'SomeSecret'
+    //"URI": "mongodb://localhost/book_store" //localhost = 127.0.0.1
+    "URI": "mongodb+srv://terence:GWxONPOwfAizdMVt@mongodbserver.cgpbxep.mongodb.net/SurveyDonkey?retryWrites=true&w=majority",
+    "Secret": 'SomeSecret'
 }
