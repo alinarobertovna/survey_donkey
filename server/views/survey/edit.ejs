@@ -1,0 +1,55 @@
+<%- include('../partials/header.ejs') %>
+
+<!--Main Nav-->
+<%- include('../partials/main_nav.ejs') %>
+
+<!--Content for Add page-->
+<br> <br> <br>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+        <h1 class="text-center">Edit Survey</h1>
+
+        <form class="form" method="POST">
+            <div class="form-group">
+                <label for="titleTextField">Title: </label>
+                <input type="text" class="form-control " id="titleTextField" placeholder="Enter Title" name="title" value="<%= survey.title %>" required>
+            </div>
+           
+            <div class="form-group">
+                <label for="descTextField">Description: </label>
+                <input type="text" class="form-control " id="descTextField" placeholder="Enter Survey Description" name="description" value="<%= survey.description %>" required>
+            </div>
+           
+            <div class="form-group">
+                <label for="startTextField">Start Date: </label>
+                <input type="text" class="form-control " id="startTextField" name="startDate" value="<%= survey.startDate %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="endTextField">End Date: </label>
+                <input type="text" class="form-control " id="endTextField" name="endDate" value="<%= survey.endDate %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="statusTextField">Status: </label>
+                <input type="text" class="form-control " id="statusTextField" placeholder="Enter Status" name="status" value="<%= survey.status %>" required>
+            </div>
+
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-edit"></i> Submit </button>
+
+            <a href="/survey-list" class="btn btn-warning"><i class="fas fa-undo"></i> Cancel </a>
+
+        </form>
+    </div>
+    </div>
+</div>
+
+<!--Footer-->
+<footer>
+    <%- include('../partials/bottom_nav.ejs') %> 
+</footer>
+    
+<!--Javascript Section-->
+<%- include('../partials/scripts.ejs') %>

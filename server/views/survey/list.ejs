@@ -1,0 +1,66 @@
+<%- include('../partials/header.ejs') %>
+
+<!--Main Nav-->
+<%- include('../partials/main_nav.ejs') %>
+
+<!-- Main Content -->
+<br> <br> <br>
+    <main>
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6"> 
+            <h1 id="table_title">Surveys</h1>
+
+            <% if (typeof displayName == 'string' && displayName) { %>
+                <a href="/survey-list/add" id="add_btn" class="btn btn-primary" role="button">
+                <i class="fas fa-plus-circle"></i> Create Survey </a>
+            <% } %>
+            <br> <br>
+            <table id="contact_table" class="table table-bordered table-striped table-hover sortable">
+                <!-- Header Row-->
+                <tr>
+                    <th class="text-center col-2">Ttile</th>
+                    <th class="text-center col-2">Description</th>
+                    <th class="text-center col-1">Start Date</th>
+                    <th class="text-center col-1">End Date</th>
+                    <th class="text-center col-1">Status</th>
+                    <% if (typeof displayName == 'string' && displayName) { %>
+                        <th class="text-center col-1"></th>
+                        <th class="text-center col-1"></th>
+                    <% } %>
+                </tr>
+
+                <!--Repeatable Template Row-->
+
+                <% for (let count = 0; count < SurveyList.length; count ++) { %>
+                    <tr>
+                        <td class="text-center col-2"><%= SurveyList[count].title %> </td>
+                        <td class="text-center col-2"><%= SurveyList[count].description %> </td>
+                        <td class="text-center col-1"><%= SurveyList[count].startDate %> </td>
+                        <td class="text-center col-1"><%= SurveyList[count].endDate %> </td>
+                        <td class="text-center col-1"><%= SurveyList[count].status %> </td>
+
+                        <% if (typeof displayName == 'string' && displayName) { %>
+                        <td class="text-center col-1">
+                            <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary">
+                                <i class="fas fa-pencil-alt"></i> Edit </a>
+                        </td>
+                        <td class="text-center col-2">
+                            <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i> Delete </a>
+                        </td>
+                        <% } %>
+                    </tr>
+
+                <% } %>
+            </table>
+        </div>
+      </div>
+    </main>
+
+<!--Footer-->
+<footer>
+<%- include('../partials/bottom_nav.ejs') %> 
+</footer>
+
+<!--Javascript Section-->
+<%- include('../partials/scripts.ejs') %>
