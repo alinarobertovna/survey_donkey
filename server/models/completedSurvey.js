@@ -6,7 +6,7 @@ let completedSurveyModel = mongoose.Schema({
     // name: String,
     // number: String,
     // email: String,
-    surveyName: String,
+    title: String,
     userName: String,
     q1: String,
     answer: String,
