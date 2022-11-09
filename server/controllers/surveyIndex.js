@@ -1,5 +1,3 @@
-//Student name: Terence Chu
-//Student number: 301220117
 
 //Just logic - no routing
 

@@ -31,12 +31,12 @@
     "popper.js": "^1.16.1"
   },
   "description": "Survey Donkey Website",
-  "main": "index.js",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alinarobertovna/survey_donkey.git"
   },
-  "author": "Terence Chu",
+  "author": "Survey Donkey",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/alinarobertovna/survey_donkey/issues"

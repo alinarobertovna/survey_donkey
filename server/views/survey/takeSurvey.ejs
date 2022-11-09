@@ -1,5 +1,3 @@
-<!-- Student name: Terence Chu
-   Student number: 301220117 -->
 
 <%- include ../partials/header.ejs %>
 
@@ -14,15 +12,12 @@
             
             <form class="form" method="POST">
                 <div class="form-group">
-                    <label for="nameTextField" name="surveyName">Survey Name: <%= survey.surveyName %></label>
+                    <label for="titleTextField" name="title">Survey Name: <%= survey.title %></label>
                 </div>
 
                 <div class="form-group">
                     <label for="userNameTextField">Your Name:</label>
-                    <input type="text" class="form-control"
-                    id="userNameTextField"
-                    placeholder="User Name"
-                    name="userName" required>
+                    <input type="text" class="form-control" id="userNameTextField" placeholder="User Name" name="userName" required>
                 </div>
 
                 <div class="form-group">

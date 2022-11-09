@@ -36,7 +36,7 @@ module.exports.displayAddPage = (req, res, next) => {
 module.exports.processAddPage = (req, res, next) => {
     //Create newBook object
     let newSurvey = Survey({
-        "surveyName": req.body.name,
+        "title": req.body.title,
         "q1":req.body.q1,
         "q1Opt1": req.body.q1Opt1,
         "q1Opt2": req.body.q1Opt2,
@@ -80,7 +80,7 @@ module.exports.processEditSurveyPage = (req, res, next) => {
 
     let updatedSurvey = Survey({
         "_id": id,
-        "surveyName": req.body.name,
+        "title": req.body.title,
         "q1":req.body.q1,
         "q1Opt1": req.body.q1Opt1,
         "q1Opt2": req.body.q1Opt2,
@@ -139,7 +139,7 @@ module.exports.displayTakeSurveyPage = (req, res, next) => {
 module.exports.processTakeSurveyPage = (req, res, next) => {
 
     let newCompletedSurvey = CompletedSurvey({
-        "surveyName": req.body.surveyName,
+        "title": req.body.title,
         "userName": req.body.userName,
         "answer": req.body.optQ1,
     });
