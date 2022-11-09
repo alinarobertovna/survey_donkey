@@ -12,33 +12,6 @@ router.get('/', indexController.displayHomePage);
 /* GET Home page. */
 router.get('/home', indexController.displayHomePage);
 
-/* GET About Us page. */
-router.get('/about', indexController.displayAboutPage);
-
-/* GET Projects page. */
-router.get('/projects', indexController.displayProjectsPage);
-
-/* GET Services page. */
-router.get('/services', indexController.displayServicesPage);
-
-/* GET Contact Us page. */
-router.get('/contact', indexController.displayContactPage);
-
-/* GET Route for displaying the Login page */
-router.get('/login', businessContactIndexController.displayLoginPage);
-
-/* POST Route for processing the Login page */
-router.post('/login', businessContactIndexController.processLoginPage);
-
-/* GET Route for displaying the Register page */
-router.get('/register', indexController.displayRegisterPage);
-
-/* POST Route for processing the Register page */
-router.post('/register', indexController.processRegisterPage);
-
-/* GET to perform UserLogout */
-router.get('/logout', indexController.performLogout);
-
 module.exports = router;
 
 

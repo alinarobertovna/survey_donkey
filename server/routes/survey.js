@@ -4,9 +4,6 @@ const { removeData } = require('jquery');
 let router = express.Router(); //A router object
 let mongoose = require('mongoose'); //So that we can use mongoose commands
 
-let jwt = require('jsonwebtoken');
-
-let passport = require('passport');
 
 let surveyController = require('../controllers/survey');
 

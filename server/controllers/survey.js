@@ -2,42 +2,40 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
-let jwt = require('jsonwebtoken');
-
 //Create a reference to the model
 let Survey = require('../models/survey');
 let CompletedSurvey = require('../models/completedSurvey');
 
-module.exports.displaySurveyList = (req,res,next) => { //Look at the top level route
+module.exports.displaySurveyList = (req, res, next) => { //Look at the top level route
     Survey.find((err, surveyList) => { //When request is received, send a response
         //If there is an error, return surveyList
-        if(err)
-        {
+        if (err) {
             return console.error(err); //Generate an error on the server side
-        }
-        else
-        {
+        } else {
 
             // response render
             //'businessContact/list' is the view. {} is the object being pushed to the view
-            res.render('survey/list', 
-            {title: 'Surveys', 
-            SurveyList: surveyList,
-            displayName: req.user ? req.user.displayName: ''}); //Pass surveyList object into the surveyList property
+            res.render('survey/list', {
+                title: 'Surveys',
+                SurveyList: surveyList,
+            }); //Pass surveyList object into the surveyList property
         }
-    }).sort({name:1}); //Chain this to .find to sort the name column in ascending order
+    }).sort({
+        name: 1
+    }); //Chain this to .find to sort the name column in ascending order
 };
 
 module.exports.displayAddPage = (req, res, next) => {
-    res.render('survey/add', {title: 'Add Survey',
-    displayName: req.user ? req.user.displayName: ''})
+    res.render('survey/add', {
+        title: 'Add Survey',
+    })
 }
 
 module.exports.processAddPage = (req, res, next) => {
     //Create newBook object
     let newSurvey = Survey({
         "title": req.body.title,
-        "q1":req.body.q1,
+        "q1": req.body.q1,
         "q1Opt1": req.body.q1Opt1,
         "q1Opt2": req.body.q1Opt2,
         "q1Opt3": req.body.q1Opt3,
@@ -45,13 +43,10 @@ module.exports.processAddPage = (req, res, next) => {
     });
 
     Survey.create(newSurvey, (err, Survey) => {
-        if (err)
-        {
+        if (err) {
             console.log(err);
             res.end(err);
-        }
-        else
-        {
+        } else {
             //Refresh the book list
             res.redirect('/survey-list');
         }
@@ -62,15 +57,15 @@ module.exports.displayEditSurveyPage = (req, res, next) => {
     let id = req.params.id;
 
     Survey.findById(id, (err, surveyToEdit) => {
-        if (err)
-        {
+        if (err) {
             console.log(err);
             res.end(err);
-        }
-        else{
+        } else {
             //Show the edit view
-            res.render('survey/edit', {title: 'Edit Survey', survey: surveyToEdit,
-            displayName: req.user ? req.user.displayName: ''})
+            res.render('survey/edit', {
+                title: 'Edit Survey',
+                survey: surveyToEdit,
+            })
         }
     });
 }
@@ -81,7 +76,7 @@ module.exports.processEditSurveyPage = (req, res, next) => {
     let updatedSurvey = Survey({
         "_id": id,
         "title": req.body.title,
-        "q1":req.body.q1,
+        "q1": req.body.q1,
         "q1Opt1": req.body.q1Opt1,
         "q1Opt2": req.body.q1Opt2,
         "q1Opt3": req.body.q1Opt3,
@@ -89,14 +84,13 @@ module.exports.processEditSurveyPage = (req, res, next) => {
     });
 
     //Search for _id
-    Survey.updateOne({_id: id}, updatedSurvey, (err) => {
-        if(err)
-        {
+    Survey.updateOne({
+        _id: id
+    }, updatedSurvey, (err) => {
+        if (err) {
             console.log(err);
             res.end(err);
-        }
-        else
-        {
+        } else {
             res.redirect('/survey-list');
         }
     });
@@ -105,14 +99,13 @@ module.exports.processEditSurveyPage = (req, res, next) => {
 module.exports.performDelete = (req, res, next) => {
     let id = req.params.id;
 
-    Survey.remove({_id: id}, (err) => {
-        if(err)
-        {
+    Survey.remove({
+        _id: id
+    }, (err) => {
+        if (err) {
             console.log(err);
             res.end(err);
-        }
-        else
-        {
+        } else {
             res.redirect('/survey-list');
         }
     });
@@ -123,15 +116,15 @@ module.exports.displayTakeSurveyPage = (req, res, next) => {
     let id = req.params.id;
 
     Survey.findById(id, (err, surveyToTake) => {
-        if (err)
-        {
+        if (err) {
             console.log(err);
             res.end(err);
-        }
-        else{
+        } else {
             //Show the edit view
-            res.render('survey/takeSurvey', {title: 'Take Survey', survey: surveyToTake,
-            displayName: req.user ? req.user.displayName: ''})
+            res.render('survey/takeSurvey', {
+                title: 'Take Survey',
+                survey: surveyToTake,
+            })
         }
     });
 }
@@ -145,13 +138,10 @@ module.exports.processTakeSurveyPage = (req, res, next) => {
     });
 
     CompletedSurvey.create(newCompletedSurvey, (err, CompletedSurvey) => {
-        if (err)
-        {
+        if (err) {
             console.log(err);
             res.end(err);
-        }
-        else
-        {
+        } else {
             //Refresh the book list
             res.redirect('/survey-list');
         }
