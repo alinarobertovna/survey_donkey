@@ -3,21 +3,25 @@
 
 <%- include partials/main_nav.ejs %>
 
-
-
 <!-- main banner -->
+<main class="container">
+<div class="jumbotron">
 <section class="bgimage" id="home">
   <div class="container-fluid">
       <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <a href="/home"><img src="assets/images/logo3.png" alt="logo" id="logo"></a>
-          <h2 class="hero_title">Welcome to <span>Survey Donkey!</span></h2>
-          <p class="hero_desc"></p>
-            <button type="button" class="btn btn-outline-dark" id="abt-btn"><a href="/survey-list" id="abt-link">Create New Survey &rarr;</a></button>
+          <h2 class="hero_title">Welcome to <br> <span>Survey Donkey!</span></h2>
+          <p class="hero_desc">-- mission statement --</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-start">
+          <a class="btn btn-outline-secondary btn-lg px-4" href="/survey-list/add">Take a Survey</a>
+          <a class="btn btn-outline-secondary btn-lg px-4" href="/survey-list">View Surveys</a>
+          </div>
       </div>
       </div>
   </div>
 </section>
+</div>
+</main>
 
 <%- include partials/bottom_nav.ejs %>
 
