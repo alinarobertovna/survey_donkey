@@ -1,3 +1,24 @@
+/* CONSIDER REMOVING THIS FILE FOR NOW
+ *
+ *
+ *
+ * COMP229-015    Group 7
+ * Group Project  Part 2 First Release
+ * Project Name:  Survey Donkey
+ * 
+ * Members (name/student ID):
+ * Akash Arora – 300849838
+ * Alina Fadeeva – 301249589
+ * Nadia Velikaia – 301244426
+ * Nithiyavany Vijai – 301212774
+ * Terence Chu – 301220117
+ * Zhihao Yu – 301305633
+ * 
+ * File name:     user.js
+ * Description:   Contains models for User Model
+*/
+
+/*
 //Require modules for the User Model
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
@@ -56,6 +77,7 @@ let User = mongoose.Schema
     }
 );
 
+
 //Configure options for User Model
 let options = ({missingPasswordError: 'Wrong / Missing Password'});
 
@@ -63,3 +85,4 @@ User.plugin(passportLocalMongoose, options);
 
 //Pass in User model and User object
 module.exports.User = mongoose.model('User', User);
+*/

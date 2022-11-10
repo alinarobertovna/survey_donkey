@@ -1,3 +1,20 @@
+<!--
+ * COMP229-015    Group 7
+ * Group Project  Part 2 First Release
+ * Project Name:  Survey Donkey
+ * 
+ * Members (name/student ID):
+ * Akash Arora – 300849838
+ * Alina Fadeeva – 301249589
+ * Nadia Velikaia – 301244426
+ * Nithiyavany Vijai – 301212774
+ * Terence Chu – 301220117
+ * Zhihao Yu – 301305633
+ * 
+ * File name:     index.ejs
+ * Description:   Contains page structure
+-->
+
 <!-- Homepage -->
 <%- include partials/header.ejs %>
 
@@ -13,7 +30,9 @@
           <a href="/home"><img src="assets/images/logo3.png" alt="logo" id="logo"></a>
           <h2 class="hero_title">Welcome to <span>Survey Donkey!</span></h2>
           <p class="hero_desc"></p>
-            <button type="button" class="btn btn-outline-dark" id="abt-btn"><a href="/survey-list" id="abt-link">Create New Survey &rarr;</a></button>
+            <button type="button" class="btn btn-outline-dark" id="abt-btn"><a href="/survey-list/add" id="abt-link">Create New Survey &rarr;</a></button>
+            <button type="button" class="btn btn-outline-dark" id="abt-btn"><a href="/survey-list" id="abt-link">Availiable Surveys &rarr;</a></button>
+
       </div>
       </div>
   </div>
