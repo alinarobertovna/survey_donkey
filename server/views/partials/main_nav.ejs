@@ -1,3 +1,4 @@
+
 <!--
  * COMP229-015    Group 7
  * Group Project  Part 2 First Release
@@ -20,27 +21,33 @@
     
     <a href="/home">HOME</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+<!-- Main Nav -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- <a class="navbar-brand" href="/">COMP229</a> -->
+    <a href="/home"><img src="assets/images/logo3.png" alt="logo" id="logo"></a>
+    <!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         
-        <!-- Fixed list items -->
-        <!-- <% if (title == "Home") { %>
-          <a class="nav-link active" href="/home">
+    
+        <% if (title == "Home") { %>
+          <a class="nav-link active" 
         <% } else { %>
           <a class="nav-link" href="/home">
         <% } %>
-          <i class="fa-solid fa-lg fa-house-laptop"></i> Home</a> -->
+          <i class="fa-solid fa-lg fa-house-laptop"></i> Home</a>
 
         <% if (title == "Surveys") { %>
-          <a class="nav-link active" href="/survey-list">
+          <a class="nav-link active"
         <% } else { %>
           <a class="nav-link" href="/survey-list">
         <% } %>
           <i class="fa-solid fa-lg fa-gear"></i> Surveys</a>
-/*
-        <!-- If displayName is a string and exists -->
+          
         <!-- <% if(typeof displayName == 'string' && displayName) { %>
           <li class="navbar-text"><i class="fas fa-lg fa-user"></i> Welcome, <%= displayName %></li>
           <li class="nav-item"><a href="/logout" class="nav-link">
