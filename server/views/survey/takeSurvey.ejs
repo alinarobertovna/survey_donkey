@@ -4,12 +4,12 @@
  * Project Name:  Survey Donkey
  * 
  * Members (name/student ID):
- * Akash Arora – 300849838
  * Alina Fadeeva – 301249589
  * Nadia Velikaia – 301244426
- * Nithiyavany Vijai – 301212774
  * Terence Chu – 301220117
  * Zhihao Yu – 301305633
+ * Akash Arora – 300849838
+ * Nithiyavany Vijai – 301212774
  * 
  * File name:     takeSurvey.ejs
  * Description:   Take survey page
@@ -19,46 +19,43 @@
 <%- include ../partials/main_nav.ejs %>
 
 <!-- Content for the Edit page -->
+<br> <br> <br>
 <div class="container">
     <div class="row">
         <div class="offset-md-3 col-md-6">
             
-            <h1><%= title %></h1>
+            <h1 class="text-center"><%= survey.title %></h1>
             
             <form class="form" method="POST">
-                <div class="form-group">
-                    <label for="titleTextField" name="title">Survey Name: <%= survey.title %></label>
-                </div>
-
                 <div class="form-group">
                     <label for="userNameTextField">Your Name:</label>
                     <input type="text" class="form-control" id="userNameTextField" placeholder="User Name" name="userName" required>
                 </div>
-
+                <br>
                 <div class="form-group">
                     <label for="q1TextField">Question 1: <%= survey.q1 %></label>
                 </div>
-
+                <br>
                 <div class="form-group">
                     <input type = "radio" name = "optQ1" id = "optQ1" value=<%= survey.q1Opt1 %>>
                     <label for="optQ1"><%= survey.q1Opt1 %></label>
                 </div>
-
+                <br>
                 <div class="form-group">
                     <input type = "radio" name = "optQ1" id = "optQ2" value=<%= survey.q1Opt2 %>>
                     <label for="optQ2"><%= survey.q1Opt2 %></label>
                 </div>
-
+                <br>
                 <div class="form-group">
                     <input type = "radio" name = "optQ1" id = "optQ3" value=<%= survey.q1Opt3 %>>
                     <label for="optQ3"><%= survey.q1Opt3 %></label>
                 </div>
-
+                <br>
                 <div class="form-group">
                     <input type = "radio" name = "optQ1" id = "optQ4" value=<%= survey.q1Opt4 %>>
                     <label for="optQ4"><%= survey.q1Opt4 %></label>
                 </div>
-
+                <br>
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-edit"></i> Submit</button>
 

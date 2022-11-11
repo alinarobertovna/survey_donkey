@@ -4,12 +4,12 @@
  * Project Name:  Survey Donkey
  * 
  * Members (name/student ID):
- * Akash Arora – 300849838
  * Alina Fadeeva – 301249589
  * Nadia Velikaia – 301244426
- * Nithiyavany Vijai – 301212774
  * Terence Chu – 301220117
  * Zhihao Yu – 301305633
+ * Akash Arora – 300849838
+ * Nithiyavany Vijai – 301212774
  * 
  * File name:     app.css
  * Description:   Custom css - styles for entire site
@@ -59,49 +59,38 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: bold;
   font-size: 4.5rem;
-  margin-left: 150px;
-  margin-top: 50px;
+  margin-left: 1050px;
+  margin-top: 150px;
 }
 
 .btn-create {
   border-radius: 5%;
 }
 
+#take-btn {
+  margin-left: 400px;
+}
+
 .hero_desc {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 2rem;
-  margin-left: 700px;
-  margin-top: 150px;
-}
-
-.mission {
-  text-align: center;
-  justify-content: center;
-  max-width: 800px;
-  margin-top: -40px;
-  margin-left: 230px;
-  padding-top: 80px;
-}
-
-#abt-btn {
+  margin-left: 1050px;
   margin-top: 20px;
-  margin-left: 300pt;
-  padding: 20px 20px 20px 20px;
-}
-
-#abt-link {
-  text-decoration: none;
-  color: black;
-}
-
-#abt-link:hover {
-  color: aliceblue;
 }
 
 #logo {
-  width: 200px;
-  height: 150px;
+  width: 230px;
+  height: 100px;
   border-radius: 5%;
+  margin-left: -650px;
+}
+
+#land_girl {
+  width: 500px;
+  height: 500px;
+  float:left;
+  margin-top: 120px;
+  margin-left: 190px;
 }
 
 #logo:hover {

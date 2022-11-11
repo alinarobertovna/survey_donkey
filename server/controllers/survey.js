@@ -4,12 +4,12 @@
  * Project Name:  Survey Donkey
  * 
  * Members (name/student ID):
- * Akash Arora – 300849838
  * Alina Fadeeva – 301249589
  * Nadia Velikaia – 301244426
- * Nithiyavany Vijai – 301212774
  * Terence Chu – 301220117
  * Zhihao Yu – 301305633
+ * Akash Arora – 300849838
+ * Nithiyavany Vijai – 301212774
  * 
  * File name:     survey.js
  * Description:   Controllers for survey page - enables add survey, edit, delete, take and view
@@ -23,23 +23,19 @@ let mongoose = require('mongoose');
 let Survey = require('../models/survey');
 let CompletedSurvey = require('../models/completedSurvey');
 
-module.exports.displaySurveyList = (req, res, next) => { //Look at the top level route
-    Survey.find((err, surveyList) => { //When request is received, send a response
-        //If there is an error, return surveyList
+module.exports.displaySurveyList = (req, res, next) => { 
+    Survey.find((err, surveyList) => { 
         if (err) {
-            return console.error(err); //Generate an error on the server side
+            return console.error(err); 
         } else {
-
-            // response render
-            //'survey/list' is the view. {} is the object being pushed to the view
             res.render('survey/list', {
                 title: 'Surveys',
                 SurveyList: surveyList,
-            }); //Pass surveyList object into the surveyList property
+            }); 
         }
     }).sort({
         name: 1
-    }); //Chain this to .find to sort the name column in ascending order
+    }); 
 };
 
 module.exports.displayAddPage = (req, res, next) => {
@@ -128,7 +124,7 @@ module.exports.performDelete = (req, res, next) => {
     });
 }
 
-//-------------
+
 module.exports.displayTakeSurveyPage = (req, res, next) => {
     let id = req.params.id;
 
@@ -164,4 +160,3 @@ module.exports.processTakeSurveyPage = (req, res, next) => {
         }
     });
 }
-//--------------

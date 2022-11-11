@@ -4,12 +4,12 @@
  * Project Name:  Survey Donkey
  * 
  * Members (name/student ID):
- * Akash Arora – 300849838
  * Alina Fadeeva – 301249589
  * Nadia Velikaia – 301244426
- * Nithiyavany Vijai – 301212774
  * Terence Chu – 301220117
  * Zhihao Yu – 301305633
+ * Akash Arora – 300849838
+ * Nithiyavany Vijai – 301212774
  * 
  * File name:     edit.ejs
  * Description:   Edit survey page
@@ -20,6 +20,7 @@
 <%- include ../partials/main_nav.ejs %>
 
 <!-- Content for the Edit page -->
+<br> <br> <br>
 <div class="container">
     <div class="row">
         <div class="offset-md-3 col-md-6">
@@ -31,32 +32,32 @@
                     <label for="nameTextField">Survey Title</label>
                     <input type="text" class="form-control" id="nameTextField" placeholder="Survey Title"value="<%= survey.title %>" name="title" required>
                 </div>
-
+                <br>
                 <div class="form-group">
-                    <label for="q1TextField">Question 1</label>
-                    <input type="text" class="form-control" id="q1TestField" placeholder="Question 1" name="q1" value="<%= survey.q1 %>" required>
+                    <label for="q1TextField">Question</label>
+                    <input type="text" class="form-control" id="q1TestField" placeholder="Type Question" name="q1" value="<%= survey.q1 %>" required>
                 </div>
-
+                <br>
                 <div class="form-group">
                     <label for="q1Opt1TextField"> Option 1 </label>
                     <input type="text" class="form-control" id="q1Opt1TextField" placeholder="Set Option 1" value="<%= survey.q1Opt1 %>" name="q1Opt1" required>
                 </div>
-
+                <br>
                 <div class="form-group">
                     <label for="q1Opt2TextField">Option 2</label>
                     <input type="text" class="form-control" id="q1Opt2TextField" placeholder="Set Option 2" value="<%= survey.q1Opt2 %>" name="q1Opt2" required>
                 </div>
-
+                <br>
                 <div class="form-group">
                     <label for="q1Opt3TextField">Option 3</label>
                     <input type="text" class="form-control" id="q1Opt3TextField" placeholder="Set Option 3" value="<%= survey.q1Opt3 %>" name="q1Opt3" required>
                 </div>
-
+                <br>
                 <div class="form-group">
                     <label for="q1Opt4TextField">Option 4</label>
                     <input type="text" class="form-control" id="q1Opt4TextField" placeholder="Set Option 4" value="<%= survey.q1Opt4 %>" name="q1Opt4" required>
                 </div>
-             
+                <br>
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-edit"></i> Submit</button>
 
