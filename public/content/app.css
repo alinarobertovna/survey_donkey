@@ -1,3 +1,20 @@
+/*
+ * COMP229-015    Group 7
+ * Group Project  Part 2 First Release
+ * Project Name:  Survey Donkey
+ * 
+ * Members (name/student ID):
+ * Akash Arora – 300849838
+ * Alina Fadeeva – 301249589
+ * Nadia Velikaia – 301244426
+ * Nithiyavany Vijai – 301212774
+ * Terence Chu – 301220117
+ * Zhihao Yu – 301305633
+ * 
+ * File name:     app.css
+ * Description:   Custom css - styles for entire site
+*/
+
 /* Home page */
 .bgimage {
   height: 100vh;
@@ -59,7 +76,8 @@
 
 #abt-btn {
   margin-top: 20px;
-  margin-left: 650px;
+  margin-left: 300pt;
+  padding: 20px 20px 20px 20px;
 }
 
 #abt-link {
@@ -81,10 +99,11 @@
   transform: translateY(-10px);
 }
 
-/* Contact List Page */
-#contact_table {
+/* Survey List Page */
+#table {
   margin-left: 500px;
 }
+
 
 #table_title {
   margin-left: 875px;

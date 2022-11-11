@@ -1,3 +1,20 @@
+/*
+ * COMP229-015    Group 7
+ * Group Project  Part 2 First Release
+ * Project Name:  Survey Donkey
+ * 
+ * Members (name/student ID):
+ * Akash Arora – 300849838
+ * Alina Fadeeva – 301249589
+ * Nadia Velikaia – 301244426
+ * Nithiyavany Vijai – 301212774
+ * Terence Chu – 301220117
+ * Zhihao Yu – 301305633
+ * 
+ * File name:     survey.js
+ * Description:   Controllers for survey page - enables add survey, edit, delete, take and view
+*/
+
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
@@ -14,7 +31,7 @@ module.exports.displaySurveyList = (req, res, next) => { //Look at the top level
         } else {
 
             // response render
-            //'businessContact/list' is the view. {} is the object being pushed to the view
+            //'survey/list' is the view. {} is the object being pushed to the view
             res.render('survey/list', {
                 title: 'Surveys',
                 SurveyList: surveyList,
@@ -32,7 +49,7 @@ module.exports.displayAddPage = (req, res, next) => {
 }
 
 module.exports.processAddPage = (req, res, next) => {
-    //Create newBook object
+    //Create newSurvey object
     let newSurvey = Survey({
         "title": req.body.title,
         "q1": req.body.q1,
@@ -47,7 +64,7 @@ module.exports.processAddPage = (req, res, next) => {
             console.log(err);
             res.end(err);
         } else {
-            //Refresh the book list
+            //Refresh the survey list
             res.redirect('/survey-list');
         }
     });
@@ -142,7 +159,7 @@ module.exports.processTakeSurveyPage = (req, res, next) => {
             console.log(err);
             res.end(err);
         } else {
-            //Refresh the book list
+            //Refresh the survey list
             res.redirect('/survey-list');
         }
     });
