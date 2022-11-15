@@ -23,6 +23,7 @@
   position: relative;
 
 }
+
 .container-fluid a {
   text-decoration: none;
 }
@@ -59,7 +60,7 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: bold;
   font-size: 4.5rem;
-  margin-left: 1050px;
+  margin-left: 850px;
   margin-top: 150px;
 }
 
@@ -68,13 +69,26 @@
 }
 
 #take-btn {
-  margin-left: 360px;
+  margin-left: 160px;
+  transition: background 0.5s;
+}
+
+#view-btn {
+  margin-left: 30px;
+  transition: background 0.5s;
+}
+
+#take-btn:hover {
+  background: #ff004f;
+}
+#view-btn:hover {
+  background: #ff004f;
 }
 
 .hero_desc {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 2rem;
-  margin-left: 1050px;
+  margin-left: 850px;
   margin-top: 20px;
 }
 
@@ -88,7 +102,7 @@
 #land_girl {
   width: 500px;
   height: 500px;
-  float:left;
+  float: left;
   margin-top: 170px;
   margin-left: 190px;
 }
@@ -117,4 +131,12 @@
 
 #login_nav {
   margin-left: 1100px;
+}
+
+.nav-login {
+  margin-left: 1100px;
+}
+
+.message{
+  margin-top: 100px;
 }

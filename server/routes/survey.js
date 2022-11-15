@@ -20,41 +20,54 @@ let express = require('express');
 const { removeData } = require('jquery');
 let router = express.Router(); //A router object
 let mongoose = require('mongoose'); //So that we can use mongoose commands
+let jwt = require('jsonwebtoken');
 
+let passport = require('passport');
+// connect to our contacts Model
 
 let surveyController = require('../controllers/survey');
+// helper function for guard purposes
 
+function requireAuth(req, res, next)
+{
+    // check if the user is logged in
+    if(!req.isAuthenticated())
+    {
+        return res.redirect('/login');
+    }
+    next();
+}
 
 
 //GET Route for the Surveys List page - this is the READ Operation
-router.get('/', surveyController.displaySurveyList);
+router.get('/', requireAuth,surveyController.displaySurveyList);
 
 //GET Route for displaying the Add page - CREATE Operation
-router.get('/add', surveyController.displayAddPage);
+router.get('/add',requireAuth, surveyController.displayAddPage);
 
 //POST Route for processing the Add page - CREATE Operation
-router.post('/add', surveyController.processAddPage);
+router.post('/add',requireAuth, surveyController.processAddPage);
 
 //GET Route for displaying the Edit page - UPDATE Operation
 //Pass the information (specifically, id) from the surveys list to the edit page
 //Search for the record with the id (from the parameters) and populate the edit page with the associated details
-router.get('/edit/:id', surveyController.displayEditSurveyPage);
+router.get('/edit/:id',requireAuth, surveyController.displayEditSurveyPage);
 
 //POST Route for processing the Edit page - UPDATE Operation
-router.post('/edit/:id', surveyController.processEditSurveyPage);
+router.post('/edit/:id',requireAuth, surveyController.processEditSurveyPage);
 
 //GET Route to perform Deletion - DELETE Operation
 //search for the particular id from the parameters
-router.get('/delete/:id', surveyController.performDelete);
+router.get('/delete/:id',requireAuth, surveyController.performDelete);
 
 //---------------
 //GET Route for displaying the Edit page - UPDATE Operation
 //Pass the information (specifically, id) from the surveys list to the edit page
 //Search for the record with the id (from the parameters) and populate the edit page with the associated details
-router.get('/takeSurvey/:id', surveyController.displayTakeSurveyPage);
+router.get('/takeSurvey/:id',requireAuth, surveyController.displayTakeSurveyPage);
 
 //POST Route for processing the Edit page - UPDATE Operation
-router.post('/takeSurvey/:id', surveyController.processTakeSurveyPage);
+router.post('/takeSurvey/:id',requireAuth, surveyController.processTakeSurveyPage);
 //----------------
 
 //Build up configuration for the router above and export into one single package, so that app.js knows where to look

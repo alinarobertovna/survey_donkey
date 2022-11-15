@@ -16,6 +16,6 @@
 */
 module.exports = 
 {
-    
     "URI": "mongodb+srv://terence:GWxONPOwfAizdMVt@mongodbserver.cgpbxep.mongodb.net/SurveyDonkey?retryWrites=true&w=majority",
+    "Secret" : 'SomeSecret'
 }

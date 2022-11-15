@@ -24,6 +24,17 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let cors = require('cors');
 
+//modules for authentication
+let session = require('express-session');
+let passport = require('passport');
+
+let passportJWT = require('passport-jwt');
+let JWTStrategy = passportJWT.Strategy;
+let ExtractJWT = passportJWT.ExtractJwt;
+
+
+let passportLocal = require('passport-local');
+let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
 
 //Database setup
@@ -65,9 +76,50 @@ app.use(express.static(path.join(__dirname, '../../public'))); //Static routes -
 app.use(express.static(path.join(__dirname, '../../node_modules'))); //Include this so that the app will know to also look in node_modules. This way, we do not need to reference node_modules everytime we want to use somewhere from there
 
 //Setup express session
+app.use(session({
+  secret: "SomeSecret",
+  saveUninitialized: false,
+  resave: false
+}));
 
 //Initialize flash
 app.use(flash());
+
+//initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//passport user configuration
+
+//create User Model Instance
+let userModel = require('../models/user');
+let User = userModel.User;
+
+//implement a user authentication strategy
+passport.use(User.createStrategy());
+
+//serialize and deserialize user info
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+let jwtOptions = {};
+jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
+jwtOptions.secretOrKey = DB.Secret;
+
+//Find the user from the jwt_payload based on the bearer token
+//If the user is found, return the user
+let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
+  User.findById(jwt_payload.id)
+  .then(user => {
+    return done(null, user);
+  })
+  .catch(err => {
+    return done(err, false);
+  });
+});
+
+passport.use(strategy);
+
 
 //Default routing
 //Top level URL
