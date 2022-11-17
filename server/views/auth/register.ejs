@@ -29,39 +29,80 @@
         <% } %>
     </div>
 
-    <div class="row">
-        <div class="offset-md-4 col-md-4">
-            <h1>Please Register</h1>
-            <form method="POST" autocomplete="off">
-                <fieldset class="form-group">
-                    <label for="username">Username: </label>
-                    <input type="text" class="form-control" name="username" placeholder="Enter username" id="username" required autofocus>
-                </fieldset>
+    <section class="vh-70">
+        <div class="container h-70">
+          <div class="row d-flex justify-content-center align-items-center h-70">
+            <div class="col-lg-12 col-xl-11">
+              <div class="card text-black" style="border-radius: 25px;">
+                <div class="card-body p-md-5">
+                  <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+      
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">New Account</p>
+      
+                      <form method="POST" class="mx-1 mx-md-4">
+      
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-user fa-lg me-3 fa-fw" style="margin-bottom:25px"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="text" id="username" class="form-control" name="username"/>
+                            <label class="form-label" for="username">Your Name</label>
+                          </div>
+                        </div>
+      
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-lock fa-lg me-3 fa-fw" style="margin-bottom:25px"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="password" id="password" class="form-control" name="password"/>
+                            <label class="form-label" for="password">Password</label>
+                          </div>
+                        </div>
 
-                <fieldset class="form-group">
-                    <label for="password">Password: </label>
-                    <input type="password" class="form-control" name="password" placeholder="Enter password" id="password" required>
-                </fieldset>
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw" style="margin-bottom:25px"></i>
+                            <div class="form-outline flex-fill mb-0">
+                              <input type="email" id="email" class="form-control" name="email"/>
+                              <label class="form-label" for="email">Email</label>
+                            </div>
+                        </div>
 
-                <fieldset class="form-group">
-                    <label for="email">Email: </label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter Email Address" id="email" required>
-                </fieldset>
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-user fa-lg me-3 fa-fw" style="margin-bottom:25px"></i>
+                            <div class="form-outline flex-fill mb-0">
+                              <input type="text" class="form-control" id="displayName" name="displayName"/>
+                              <label class="form-label" for="displayName">Display Name</label>
+                            </div>
+                        </div>
 
-                <fieldset class="form-group">
-                    <label for="displayName">Display Name: </label>
-                    <input type="text" class="form-control" name="displayName" placeholder="Enter Display Name" id="displayName" required>
-                </fieldset>
+                        <fieldset class="form-group d-flex justify-content-center mb-5">
+                            <input type = "radio" name = "optUserType" id = "userTypeSurveyTaker" value="Survey Taker" checked>&nbsp;
+                            <label for="userTypeSurveyTaker">Survey Taker</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type = "radio" name = "optUserType" id = "userTypeSurveyCreator" value="Survey Creator">&nbsp;
+                            <label for="userTypeSurveyCreator">Survey Creator</label>
+                        </fieldset>
+      
+                        <div class="form-check d-flex justify-content-center mb-5">
+                          <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                          <label class="form-check-label" for="form2Example3">
+                            I agree all statements in <a href="#!">Terms of service</a>
+                          </label>
+                        </div>
+      
+                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                            <input type="submit" class="btn btn-primary" value="Register">
+                        </div>
+                        </div>
+                      </form>
 
-                <fieldset class="form-group text-right">
-                    <input type="submit" class="btn btn-success" value="Register">
-                    <a href="/">
-                        <input type="button" class="btn btn-warning" value="Cancel">
-                    </a>
-                </fieldset>
-            </form>
+                    </div>                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
+      </section>
 
 </main>
 

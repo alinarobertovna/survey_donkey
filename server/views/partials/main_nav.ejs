@@ -37,12 +37,10 @@
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <!-- If displayName is a string and exists -->
             <% if(typeof displayName == 'string' && displayName) { %>
-              <li class="navbar-text"><i class="fas fa-lg fa-user"></i> Welcome, <%= displayName %></li>
-              <li class="nav-item"><a href="/logout" class="nav-link">
-                <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+              <li class="navbar-text"> Welcome, <%= displayName %></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
             <% } else { %>
-              <li class="nav-item"><a href="/login" class="nav-link" >
-                <i class="fas fa-lg fa-sign-in-alt"></i> Login</a></li>
+              <li class="nav-item"><a href="/login" class="nav-link" >Login</a></li>
             <% } %>
           </ul>
         
