@@ -60,7 +60,6 @@ router.post('/edit/:id',requireAuth, surveyController.processEditSurveyPage);
 //search for the particular id from the parameters
 router.get('/delete/:id',requireAuth, surveyController.performDelete);
 
-//---------------
 //GET Route for displaying the Edit page - UPDATE Operation
 //Pass the information (specifically, id) from the surveys list to the edit page
 //Search for the record with the id (from the parameters) and populate the edit page with the associated details
@@ -68,7 +67,6 @@ router.get('/takeSurvey/:id',requireAuth, surveyController.displayTakeSurveyPage
 
 //POST Route for processing the Edit page - UPDATE Operation
 router.post('/takeSurvey/:id',requireAuth, surveyController.processTakeSurveyPage);
-//----------------
 
 //Build up configuration for the router above and export into one single package, so that app.js knows where to look
 module.exports = router;
