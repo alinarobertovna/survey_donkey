@@ -33,6 +33,10 @@ let User = mongoose.Schema (
             trim: true,
             required: 'Display Name is required'
        },
+       userType:
+       {
+            type: String,
+       },
        created:
        {
             type: Date,
