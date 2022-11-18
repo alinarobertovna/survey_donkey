@@ -21,6 +21,7 @@ let mongoose  = require('mongoose'); //To get access to the mongoose clases
 let surveyModel = mongoose.Schema({
     //Properties/structure of the DB
 
+    surveyCreator: String,
     title: String,
     q1: String,
     q1Opt1: String,

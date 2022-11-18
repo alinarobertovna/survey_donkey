@@ -28,10 +28,13 @@ module.exports.displaySurveyList = (req, res, next) => {
         if (err) {
             return console.error(err); 
         } else {
+            //res.render survey/list and send to it title, SurveyList, displayName, userType, and username 
             res.render('survey/list', {
                 title: 'Surveys',
                 SurveyList: surveyList,
-                displayName: req.user ? req.user.displayName : ''
+                displayName: req.user ? req.user.displayName : '',
+                userType: req.user.userType,
+                username: req.user.username
             }); 
         }
     }).sort({
@@ -42,13 +45,14 @@ module.exports.displaySurveyList = (req, res, next) => {
 module.exports.displayAddPage = (req, res, next) => {
     res.render('survey/add', {
         title: 'Add Survey',
-        displayName: req.user ? req.user.displayName : ''
+        displayName: req.user ? req.user.displayName : '',
     })
 }
 
 module.exports.processAddPage = (req, res, next) => {
     //Create newSurvey object
     let newSurvey = Survey({
+        "surveyCreator": req.user.displayName,
         "title": req.body.title,
         "q1": req.body.q1,
         "q1Opt1": req.body.q1Opt1,

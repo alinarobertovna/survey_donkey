@@ -26,36 +26,81 @@
         <div class="offset-md-1 col-md-11">
             <h1 class="text-center">Surveys</h1>
             
-            <a href="/survey-list/add" class="btn btn-primary" role="button">
-                <i class="fas fa-plus-circle"></i> Create a Survey</a>
+            <% if(userType == 'Survey Creator') { %>
+                <a href="/survey-list/add" class="btn btn-primary" role="button">
+                    <i class="fas fa-plus-circle"></i> Create a Survey</a>
+                    <br> <br>
+            <% } %>
 
-            <br> <br>
             <table class="table table-bordered table-striped table-hover">
                 <!-- Header Row -->
-                <tr>
-
-                        <th class="text-center col-2">Title</th>
-
-                </tr>
+                
+                <% if(userType == 'Survey Taker') { %>
+                    <tr>
+                        <th class="text-center col-3">Survey Name</th>
+                        <th class="text-center col-2">Take Survey</th>
+                        <!-- Create 3 empty columns -->
+                        <th class="text-center col-2"></th> 
+                        <th class="text-center col-2"></th>
+                        <th class="text-center col-2"></th>
+                    </tr>
+                <% } else if (userType == 'Survey Creator') { %>
+                    <tr>
+                        <th class="text-center col-3">Survey Name</th>
+                        <th class="text-center col-2">Take Survey</th>
+                        <th class="text-center col-2">Edit Survey</th> 
+                        <th class="text-center col-2">See Survey Results</th>
+                        <th class="text-center col-2">Delete Survey</th>
+                    </tr>
+                <% } %> 
 
                 <!-- Repeatable Template Row -->
                 <% for(let count = 0; count < SurveyList.length; count++) { %>
                     <tr>
 
-                            <td class="text-center col-2"><%= SurveyList[count].title %></td>
-                        
-                            <td class="text-center col-1">
-                                <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
-                                <i class="fas fa-pencil-alt"></i> Edit</a>
-                            </td>
-                            <td class="text-center col-1">
-                                <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash-alt"></i> Delete</a>
-                            </td>
-                            <td class="text-center col-1">
+                        <td class="text-center col-3"><%= SurveyList[count].title %></td>
+
+                        <% if(userType == 'Survey Taker') { %>
+                            <td class="text-center col-2">
                                 <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
                                     <i class="bi bi-check-square"></i> Take Survey</a>
                             </td>
+                            <!-- Create 3 empty columns -->
+                            <td class="text-center col-2"></td>
+                            <td class="text-center col-2"></td>
+                            <td class="text-center col-2"></td>
+                        <% } else if (userType == 'Survey Creator' && SurveyList[count].surveyCreator == username) { %>
+                            <!-- <h4>< %= SurveyList[count].surveyCreator %></h4>
+                            <h4>< %= username %></h4> -->
+                            <td class="text-center col-2">
+                                <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-check-square"></i> Take Survey</a>
+                            </td>
+                            <td class="text-center col-2">
+                                <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i> Edit</a>
+                            </td>
+                            <td class="text-center col-2">
+                                <a href="" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-check-square"></i> See Results</a>
+                            </td>
+                            <td class="text-center col-2">
+                                <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i> Delete</a>
+                            </td>
+                        <% } else { %>
+                            <td class="text-center col-2">
+                                <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-check-square"></i> Take Survey</a>
+                            </td>
+                            <td class="text-center col-2"></td>
+                            <td class="text-center col-2"></td>
+                            <td class="text-center col-2"></td>
+                        <% } %> 
+
+
+
+
           
                     </tr>
                 <% } %>
