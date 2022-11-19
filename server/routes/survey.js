@@ -40,7 +40,7 @@ function requireAuth(req, res, next)
 
 
 //GET Route for the Surveys List page - this is the READ Operation
-router.get('/', requireAuth,surveyController.displaySurveyList);
+router.get('/', surveyController.displaySurveyList);
 
 //GET Route for displaying the Add page - CREATE Operation
 router.get('/add',requireAuth, surveyController.displayAddPage);
@@ -63,10 +63,10 @@ router.get('/delete/:id',requireAuth, surveyController.performDelete);
 //GET Route for displaying the Edit page - UPDATE Operation
 //Pass the information (specifically, id) from the surveys list to the edit page
 //Search for the record with the id (from the parameters) and populate the edit page with the associated details
-router.get('/takeSurvey/:id',requireAuth, surveyController.displayTakeSurveyPage);
+router.get('/takeSurvey/:id', surveyController.displayTakeSurveyPage);
 
 //POST Route for processing the Edit page - UPDATE Operation
-router.post('/takeSurvey/:id',requireAuth, surveyController.processTakeSurveyPage);
+router.post('/takeSurvey/:id', surveyController.processTakeSurveyPage);
 
 //Build up configuration for the router above and export into one single package, so that app.js knows where to look
 module.exports = router;
