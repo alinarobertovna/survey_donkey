@@ -33,8 +33,8 @@ module.exports.displaySurveyList = (req, res, next) => {
                 title: 'Surveys',
                 SurveyList: surveyList,
                 displayName: req.user ? req.user.displayName : '',
-                userType: req.user.userType,
-                username: req.user.username
+                userType: req.user? req.user.userType : '',
+                username: req.user? req.user.username: ''
             }); 
         }
     }).sort({
