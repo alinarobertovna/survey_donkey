@@ -163,8 +163,10 @@ module.exports.processTakeSurveyPage = (req, res, next) => {
             console.log(err);
             res.end(err);
         } else {
-            //Refresh the survey list
+            setTimeout(function() {
+            //Refresh the survey list after submiting survey 1 second
             res.redirect('/survey-list');
+            }, 1000);
         }
     });
 }

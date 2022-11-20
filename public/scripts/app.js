@@ -37,3 +37,10 @@
     }
     window.addEventListener("load", Start);
 })();
+
+const popup = document.getElementById('popup')
+function openPopup(){
+    popup.classList.add('open-popup');
+}
+
+
