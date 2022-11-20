@@ -52,7 +52,16 @@
                         <th class="text-center col-2">See Survey Results</th>
                         <th class="text-center col-2">Delete Survey</th>
                     </tr>
-                <% } %> 
+                <% } else { %>
+                    <tr>
+                        <th class="text-center col-3">Survey Name</th>
+                        <th class="text-center col-2">Take Survey</th>
+                        
+                        <th class="text-center col-2"></th> 
+                        <th class="text-center col-2"></th>
+                        <th class="text-center col-2"></th>
+                    </tr>
+                <% } %>
 
                 <!-- Repeatable Template Row -->
                 <% for(let count = 0; count < SurveyList.length; count++) { %>
@@ -97,11 +106,6 @@
                             <td class="text-center col-2"></td>
                             <td class="text-center col-2"></td>
                         <% } %> 
-
-
-
-
-          
                     </tr>
                 <% } %>
             </table>
