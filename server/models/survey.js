@@ -23,12 +23,15 @@ let surveyModel = mongoose.Schema({
 
     surveyCreator: String,
     title: String,
+    description: String,
+    endDate: Date,
     q1: String,
     q1Opt1: String,
     q1Opt2: String,
     q1Opt3: String,
-    q1Opt4: String,
+    q1Opt4: String
     
+
 },
 {
     collection: "surveys" 

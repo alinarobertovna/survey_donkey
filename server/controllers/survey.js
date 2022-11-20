@@ -54,6 +54,8 @@ module.exports.processAddPage = (req, res, next) => {
     let newSurvey = Survey({
         "surveyCreator": req.user.displayName,
         "title": req.body.title,
+        "description": req.body.description,
+        "endDate": req.body.endDate,
         "q1": req.body.q1,
         "q1Opt1": req.body.q1Opt1,
         "q1Opt2": req.body.q1Opt2,
@@ -96,6 +98,8 @@ module.exports.processEditSurveyPage = (req, res, next) => {
     let updatedSurvey = Survey({
         "_id": id,
         "title": req.body.title,
+        "description": req.body.description,
+        "endDate": req.body.endDate,
         "q1": req.body.q1,
         "q1Opt1": req.body.q1Opt1,
         "q1Opt2": req.body.q1Opt2,
