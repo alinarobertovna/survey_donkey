@@ -2,7 +2,7 @@
 
 /**
  * COMP229-015    Group 7
- * Group Project  Part 2 First Release
+ * Group Project  Part 3 Second Release (Authentication)
  * Project Name:  Survey Donkey
  * 
  * Members (name/student ID):
