@@ -30,11 +30,12 @@ let userModel = require('../models/user');
 let User = userModel.User;
 
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('index', {
-        title: 'Home',
-        displayName: req.user ? req.user.displayName : '',
+    res.render("index", {
+      title: "Home",
+      messages: req.flash("VerificationMessage"),
+      displayName: req.user ? req.user.displayName : "",
     });
-}
+  };
 
 
 module.exports.displayLoginPage = (req, res, next) => {
