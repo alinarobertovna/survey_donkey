@@ -1,6 +1,6 @@
 <!--
  * COMP229-015    Group 7
- * Group Project  Part 2 First Release
+ * Group Project  Part 3 Second Release (Authentication)
  * Project Name:  Survey Donkey
  * 
  * Members (name/student ID):
@@ -37,49 +37,41 @@
                 
                 <tr>
                         
-                        <% if(userType == 'Survey Taker') { %>
-                    
-                        <th class="text-center col-2">Survey Name</th>
-                        <th class="text-center col-3">Description</th>            
-                        <th class="text-center col-2">End Date</th>
-                        <th class="text-center col-2">Take Survey</th>
-
+                    <% if(userType == 'Survey Taker') { %>
                         
-                    
-                <% } else if (userType == 'Survey Creator') { %>
-                    
-                        <th class="text-center col-2">Survey Name</th>
-                        <th class="text-center col-3">Description</th>                        
-                        <th class="text-center col-2">End Date</th>
-                        <th class="text-center col-2">Take Survey</th>
-                        <th class="text-center col-1">Edit Survey</th> 
-                        <th class="text-center col-2">See Results</th>
-                        <th class="text-center col-1">Delete Survey</th>
+                            <th class="text-center col-2">Survey Name</th>
+                            <th class="text-center col-3">Description</th>            
+                            <th class="text-center col-2">End Date</th>
+                            <th class="text-center col-2">Take Survey</th>                      
                         
-                    
-
-                 <% } else if (typeof displayName == 'string' && displayName) { %>
-                    
-                        <th class="text-center col-2">Survey Name</th>
-                        <th class="text-center col-3">Description</th>                        
-                        <th class="text-center col-2">End Date</th>
-                        <th class="text-center col-2">Take Survey</th>
-                        <th class="text-center col-1">Edit Survey</th> 
-                        <th class="text-center col-2">See Results</th>
-                        <th class="text-center col-1">Delete Survey</th>
-
-                <% } else { %>
-                    
-                        <th class="text-center col-2">Survey Name</th>
-                        <th class="text-center col-3">Description</th>
-                        <th class="text-center col-2">End Date</th>
-                        <th class="text-center col-2">Take Survey</th>
-
-                      
-
+                    <% } else if (userType == 'Survey Creator') { %>
                         
-                    
-                <% } %>
+                            <th class="text-center col-2">Survey Name</th>
+                            <th class="text-center col-3">Description</th>                        
+                            <th class="text-center col-2">End Date</th>
+                            <th class="text-center col-2">Take Survey</th>
+                            <th class="text-center col-1">Edit Survey</th> 
+                            <th class="text-center col-2">See Results</th>
+                            <th class="text-center col-1">Delete Survey</th>
+                            
+                    <% } else if (typeof displayName == 'string' && displayName) { %>
+                        
+                            <th class="text-center col-2">Survey Name</th>
+                            <th class="text-center col-3">Description</th>                        
+                            <th class="text-center col-2">End Date</th>
+                            <th class="text-center col-2">Take Survey</th>
+                            <th class="text-center col-1">Edit Survey</th> 
+                            <th class="text-center col-2">See Results</th>
+                            <th class="text-center col-1">Delete Survey</th>
+
+                    <% } else { %>
+                        
+                            <th class="text-center col-2">Survey Name</th>
+                            <th class="text-center col-3">Description</th>
+                            <th class="text-center col-2">End Date</th>
+                            <th class="text-center col-2">Take Survey</th>
+
+                    <% } %>
                 
                 </tr> 
 
@@ -92,17 +84,15 @@
 
                         <% if(userType == 'Survey Taker') { %>
 
-                        <td class="text-center col-3"><%= SurveyList[count].description %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].endDate %></td>
-                            <td class="text-center col-2">
-                                <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
-                                    <i class="bi bi-check-square"></i> Take Survey</a>
-                            </td>
-                            
+                            <td class="text-center col-3"><%= SurveyList[count].description %></td>
+                                <td class="text-center col-2"><%= SurveyList[count].endDate %></td>
+                                <td class="text-center col-2">
+                                    <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
+                                        <i class="bi bi-check-square"></i> Take Survey</a>
+                                </td>                            
                             
                         <% } else if (userType == 'Survey Creator' && SurveyList[count].surveyCreator == username) { %>
-                            <!-- <h4>< %= SurveyList[count].surveyCreator %></h4>
-                            <h4>< %= username %></h4> -->
+
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
                             <td class="text-center col-2"><%= SurveyList[count].endDate %></td>
                             <td class="text-center col-2">
@@ -142,16 +132,9 @@
                                 <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
                                     <i class="bi bi-check-square"></i> Take Survey</a>
                             </td>
-                            
-                           
-                        
 
                         <% } %> 
 
-
-
-
-          
                     </tr>
                 <% } %>
             </table>
