@@ -14,10 +14,14 @@
  * File name:     survey.js
  * Description:   Controllers for survey page - enables add survey, edit, delete, take and view
 */
-
-let express = require('express');
+let express = require("express");
 let router = express.Router();
-let mongoose = require('mongoose');
+let mongoose = require("mongoose");
+let passport = require("passport");
+
+//enable jwt
+let jwt = require("jsonwebtoken");
+let DB = require("../config/db");
 
 //Create a reference to the model
 let Survey = require('../models/survey');
@@ -43,10 +47,21 @@ module.exports.displaySurveyList = (req, res, next) => {
 };
 
 module.exports.displayAddPage = (req, res, next) => {
-    res.render('survey/add', {
-        title: 'Add Survey',
-        displayName: req.user ? req.user.displayName : '',
-    })
+    passport.authenticate("local", (err, user, info) => {
+        if (req.user.userType == "Survey Taker") {
+          req.flash(
+            "VerificationMessage",
+            "Verification Error, This user cannot create a survey!"
+          );
+          return res.redirect("/");
+        }
+        if (req.user.userType == "Survey Creator") {
+          res.render("survey/add", {
+            title: "Add Survey",
+            displayName: req.user ? req.user.displayName : "",
+          });
+        }
+      })(req, res, next);
 }
 
 module.exports.processAddPage = (req, res, next) => {
