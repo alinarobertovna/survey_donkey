@@ -28,7 +28,7 @@
             
             <% if(userType == 'Survey Creator') { %>
                 <a href="/survey-list/add" class="btn btn-primary" role="button">
-                    <i class="fas fa-plus-circle"></i> Create a Survey</a>
+                    <i class="fas fa-plus-circle"></i>Create a Survey</a>
                     <br> <br>
             <% } %>
 
@@ -53,16 +53,6 @@
                             <th class="text-center col-2">See Results</th>
                             <th class="text-center col-1">Delete Survey</th>
 
-                    <!-- < % } else if (typeof displayName == 'string' && displayName) { %>
-                        
-                            <th class="text-center col-2">Survey Name</th>
-                            <th class="text-center col-3">Description</th>                        
-                            <th class="text-center col-2">End Date</th>
-                            <th class="text-center col-2">Take Survey</th>
-                            <th class="text-center col-1">Edit Survey</th> 
-                            <th class="text-center col-2">See Results</th>
-                            <th class="text-center col-1">Delete Survey</th> -->
-
                     <% } else { %>
                         
                             <th class="text-center col-2">Survey Name</th>
@@ -77,39 +67,48 @@
                 <!-- Repeatable Template Row -->
                 <% for(let count = 0; count < SurveyList.length; count++) { %>
                     <tr>
-                        <!-- The current process: -->
-                        <!-- 1) When the survey expiration date and time is read from MongoDB, something like following output is generated: Wed Dec 07 2022 00:00:00 GMT-0500 (Eastern Standard Time),
-                                which can be read as Wednesday, December 7, 2022 at midnight EST
-                             2) Convert the output to a string with .toString()
-                             3) To get the expiration date and time, simply truncate the last 33 characters of the string, i.e.,  GMT-0500 (Eastern Standard Time). The 33 characters include the 
-                                single space before GMT. Use the following code: < %= SurveyList[count].endDate.toString().substring(0, SurveyList[count].endDate.toString().length - 33 ) %> -->
-
-                        <!-- An alternate process, if the group wishes to pursue it: -->
-                        <!-- Build the date using the following methods:
-                            < %= new Date(SurveyList[count].endDate).getFullYear() %>
-                            < %= new Date(SurveyList[count].endDate).getMonth() %>
-                            < %= new Date(SurveyList[count].endDate).getDate() %> -->
-
                         <td class="text-center col-2"><%= SurveyList[count].title %></td>  
 
-                        <% if(userType == 'Survey Taker') { %>
+                        <% if (userType == 'Survey Taker' && new Date() > SurveyList[count].endDate) { %>
+                            <td class="text-center col-3"><%= SurveyList[count].description %></td>
+                            <td class="text-center col-2"><%= SurveyList[count].endDate.toISOString().split('T')[0] %></td>
+                            <td class="text-center col-2">Expired</td> 
+
+                        <% } else if (userType == 'Survey Taker' && new Date() <= SurveyList[count].endDate) { %>
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
                                 <td class="text-center col-2"><%= SurveyList[count].endDate.toISOString().split('T')[0] %></td>
                                 <td class="text-center col-2">
                                     <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
-                                        <i class="bi bi-check-square"></i> Take Survey</a>
-                                </td>                            
+                                        <i class="bi bi-check-square"></i>Take Survey</a>
+                                </td>                 
                             
-                        <% } else if (userType == 'Survey Creator' && SurveyList[count].surveyCreator == username) { %>
+                        <% } else if (userType == 'Survey Creator' && SurveyList[count].surveyCreator == username && new Date() <= SurveyList[count].endDate) { %>
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
                             <td class="text-center col-2"><%= SurveyList[count].endDate.toISOString().split('T')[0] %></td>
                             <td class="text-center col-2">
                                 <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
-                                    <i class="bi bi-check-square"></i> Take Survey</a>
+                                    <i class="bi bi-check-square"></i>Take Survey</a>
                             </td>
                             <td class="text-center col-1">
                                 <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
-                                <i class="fas fa-pencil-alt"></i> Edit</a>
+                                <i class="fas fa-pencil-alt"></i> Edit </a>
+                            </td>
+                            <td class="text-center col-2">
+                                <a href="" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-check-square"></i>See Results</a>
+                            </td>
+                            <td class="text-center col-1">
+                                <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i> Delete </a>
+                            </td>
+
+                        <% } else if (userType == 'Survey Creator' && SurveyList[count].surveyCreator == username && new Date() > SurveyList[count].endDate) { %>
+                            <td class="text-center col-3"><%= SurveyList[count].description %></td>
+                            <td class="text-center col-2"><%= SurveyList[count].endDate.toISOString().split('T')[0] %></td>
+                            <td class="text-center col-2">Expired</td>
+                            <td class="text-center col-1">
+                                <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i> Edit </a>
                             </td>
                             <td class="text-center col-2">
                                 <a href="" class="btn btn-primary btn-sm">
@@ -117,7 +116,7 @@
                             </td>
                             <td class="text-center col-1">
                                 <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash-alt"></i> Delete</a>
+                                    <i class="fas fa-trash-alt"></i> Delete </a>
                             </td>
 
                         <!-- If a survey creator is logged in, display the following for surveys that DO NOT belong to them: -->
@@ -127,7 +126,7 @@
                         <!-- Empty Edit Survey column -->
                         <!-- Empty See Results column -->
                         <!-- Empty Delete Survey column -->
-                        <% } else if (userType == 'Survey Creator' && SurveyList[count].surveyCreator != username) { %>
+                        <% } else if (userType == 'Survey Creator' && SurveyList[count].surveyCreator != username && new Date() <= SurveyList[count].endDate) { %>
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
                             <td class="text-center col-2"><%= SurveyList[count].endDate.toISOString().split('T')[0] %></td>
                             <td class="text-center col-2">
@@ -138,26 +137,25 @@
                             <td class="text-center col-2"></td>
                             <td class="text-center col-1"></td> 
 
-                        <!-- < % } else if (typeof displayName == 'string' && displayName) { %>
-                            <td class="text-center col-3">< %= SurveyList[count].description %></td>
-                            <td class="text-center col-2">< %= SurveyList[count].endDate %></td>
-                            <td class="text-center col-2">
-                                <a href="/survey-list/takeSurvey/< %= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
-                                    <i class="bi bi-check-square"></i> Take Survey</a>
-                            </td>
-
+                        <% } else if (userType == 'Survey Creator' && SurveyList[count].surveyCreator != username && new Date() > SurveyList[count].endDate) { %>
+                            <td class="text-center col-3"><%= SurveyList[count].description %></td>
+                            <td class="text-center col-2"><%= SurveyList[count].endDate.toISOString().split('T')[0] %></td>
+                            <td class="text-center col-2">Expired</td>
                             <td class="text-center col-1"></td> 
                             <td class="text-center col-2"></td>
-                            <td class="text-center col-1"></td> -->
+                            <td class="text-center col-1"></td> 
 
-                        <% } else { %>
+                        <% } else if (new Date() <= SurveyList[count].endDate) { %>
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
                             <td class="text-center col-2"><%= SurveyList[count].endDate.toISOString().split('T')[0] %></td>
                             <td class="text-center col-2">
                                 <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
                                     <i class="bi bi-check-square"></i> Take Survey</a>
                             </td>
-
+                        <% } else if (new Date() > SurveyList[count].endDate) { %>
+                            <td class="text-center col-3"><%= SurveyList[count].description %></td>
+                            <td class="text-center col-2"><%= SurveyList[count].endDate.toISOString().split('T')[0] %></td>
+                            <td class="text-center col-2">Expired</td> 
                         <% } %> 
 
                     </tr>
