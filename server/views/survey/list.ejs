@@ -1,6 +1,6 @@
 <!--
  * COMP229-015    Group 7
- * Group Project  Part 3 Second Release (Authentication)
+ * Group Project  Part 4 Final Release
  * Project Name:  Survey Donkey
  * 
  * Members (name/student ID):
@@ -94,7 +94,7 @@
 
                         <% if(userType == 'Survey Taker') { %>
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
-                                <td class="text-center col-2"><%= SurveyList[count].endDate.toString().substring(0, SurveyList[count].endDate.toString().length - 33) %></td>
+                                <td class="text-center col-2"><%= SurveyList[count].endDate.toISOString().split('T')[0] %></td>
                                 <td class="text-center col-2">
                                     <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
                                         <i class="bi bi-check-square"></i> Take Survey</a>
@@ -102,7 +102,7 @@
                             
                         <% } else if (userType == 'Survey Creator' && SurveyList[count].surveyCreator == username) { %>
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].endDate.toString().substring(0, SurveyList[count].endDate.toString().length - 33) %></td>
+                            <td class="text-center col-2"><%= SurveyList[count].endDate.toISOString().split('T')[0] %></td>
                             <td class="text-center col-2">
                                 <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
                                     <i class="bi bi-check-square"></i> Take Survey</a>
@@ -129,7 +129,7 @@
                         <!-- Empty Delete Survey column -->
                         <% } else if (userType == 'Survey Creator' && SurveyList[count].surveyCreator != username) { %>
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].endDate.toString().substring(0, SurveyList[count].endDate.toString().length - 33) %></td>
+                            <td class="text-center col-2"><%= SurveyList[count].endDate.toISOString().split('T')[0] %></td>
                             <td class="text-center col-2">
                                 <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
                                     <i class="bi bi-check-square"></i> Take Survey</a>
@@ -152,7 +152,7 @@
 
                         <% } else { %>
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].endDate.toString().substring(0, SurveyList[count].endDate.toString().length - 33) %></td>
+                            <td class="text-center col-2"><%= SurveyList[count].endDate.toISOString().split('T')[0] %></td>
                             <td class="text-center col-2">
                                 <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
                                     <i class="bi bi-check-square"></i> Take Survey</a>
