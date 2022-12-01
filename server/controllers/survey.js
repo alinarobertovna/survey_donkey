@@ -65,12 +65,30 @@ module.exports.displayAddPage = (req, res, next) => {
 }
 
 module.exports.processAddPage = (req, res, next) => {
+    //MongoDB stores dates and times in ISO format, for example, 2022-12-07T05:00:00.000+00:00
+        //Breakdown of the format: yyyy-mm-ddThh:mm:ss.sss+00:00
+            //T is a time delimiter 
+            //sss is for milliseconds
+            //+00:00 denotes the time zone as UTC 
+            //MongoDB by default stores dates and times in UTC and will output dates and times relative to UTC 
+            //For the example given above, the output will look like the following: Wed Dec 07 2022 00:00:00 GMT-0500 (Eastern Standard Time)
+
+    //date variable stores the survey's expiration date in a new Date object (which have built-in methods for time and date manipulations)
+    date = new Date(req.body.endDate);
+    
+    //.getTime() returns the survey's expiration date in number of milliseconds since January 1, 1970 UTC
+    //.getTimezoneOffset() returns the difference between UTC and the local time in minutes (positive for for those behind UTC, negative for those ahead of UTC)
+        //240 mintes (4 hours) during daylight saving time
+        //300 minutes (5 hours) during standard time (i.e., not daylight saving time)
+    //.getTimezoneOffset() * 60 seconds * 1000 milliseconds to convert UTC to EDT or EST (in milliseconds since January 1, 1970 UTC)
+    date = date.getTime() + (date.getTimezoneOffset()*60*1000);
+
     //Create newSurvey object
     let newSurvey = Survey({
         "surveyCreator": req.user.displayName,
         "title": req.body.title,
         "description": req.body.description,
-        "endDate": req.body.endDate,
+        "endDate": date, //Write the converted time and date to the MongoDB cloud
         "q1": req.body.q1,
         "q1Opt1": req.body.q1Opt1,
         "q1Opt2": req.body.q1Opt2,
@@ -110,11 +128,14 @@ module.exports.displayEditSurveyPage = (req, res, next) => {
 module.exports.processEditSurveyPage = (req, res, next) => {
     let id = req.params.id;
 
+    date = new Date(req.body.endDate);
+    date = date.getTime() + (date.getTimezoneOffset()*60*1000);
+
     let updatedSurvey = Survey({
         "_id": id,
         "title": req.body.title,
         "description": req.body.description,
-        "endDate": req.body.endDate,
+        "endDate": date,
         "q1": req.body.q1,
         "q1Opt1": req.body.q1Opt1,
         "q1Opt2": req.body.q1Opt2,

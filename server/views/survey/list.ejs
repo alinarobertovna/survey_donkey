@@ -77,13 +77,24 @@
                 <!-- Repeatable Template Row -->
                 <% for(let count = 0; count < SurveyList.length; count++) { %>
                     <tr>
-                    
-                        <td class="text-center col-2"><%= SurveyList[count].title %></td>  
+                        <!-- The current process: -->
+                        <!-- 1) When the survey expiration date and time is read from MongoDB, something like following output is generated: Wed Dec 07 2022 00:00:00 GMT-0500 (Eastern Standard Time),
+                                which can be read as Wednesday, December 7, 2022 at midnight EST
+                             2) Convert the output to a string with .toString()
+                             3) To get the expiration date and time, simply truncate the last 33 characters of the string, i.e.,  GMT-0500 (Eastern Standard Time). The 33 characters include the 
+                                single space before GMT. Use the following code: < %= SurveyList[count].endDate.toString().substring(0, SurveyList[count].endDate.toString().length - 33 ) %> -->
 
+                        <!-- An alternate process, if the group wishes to pursue it: -->
+                        <!-- Build the date using the following methods:
+                            < %= new Date(SurveyList[count].endDate).getFullYear() %>
+                            < %= new Date(SurveyList[count].endDate).getMonth() %>
+                            < %= new Date(SurveyList[count].endDate).getDate() %> -->
+
+                        <td class="text-center col-2"><%= SurveyList[count].title %></td>  
 
                         <% if(userType == 'Survey Taker') { %>
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
-                                <td class="text-center col-2"><%= SurveyList[count].endDate %></td>
+                                <td class="text-center col-2"><%= SurveyList[count].endDate.toString().substring(0, SurveyList[count].endDate.toString().length - 33) %></td>
                                 <td class="text-center col-2">
                                     <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
                                         <i class="bi bi-check-square"></i> Take Survey</a>
@@ -91,7 +102,7 @@
                             
                         <% } else if (userType == 'Survey Creator' && SurveyList[count].surveyCreator == username) { %>
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].endDate %></td>
+                            <td class="text-center col-2"><%= SurveyList[count].endDate.toString().substring(0, SurveyList[count].endDate.toString().length - 33) %></td>
                             <td class="text-center col-2">
                                 <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
                                     <i class="bi bi-check-square"></i> Take Survey</a>
@@ -118,7 +129,7 @@
                         <!-- Empty Delete Survey column -->
                         <% } else if (userType == 'Survey Creator' && SurveyList[count].surveyCreator != username) { %>
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].endDate %></td>
+                            <td class="text-center col-2"><%= SurveyList[count].endDate.toString().substring(0, SurveyList[count].endDate.toString().length - 33) %></td>
                             <td class="text-center col-2">
                                 <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
                                     <i class="bi bi-check-square"></i> Take Survey</a>
@@ -141,7 +152,7 @@
 
                         <% } else { %>
                             <td class="text-center col-3"><%= SurveyList[count].description %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].endDate %></td>
+                            <td class="text-center col-2"><%= SurveyList[count].endDate.toString().substring(0, SurveyList[count].endDate.toString().length - 33) %></td>
                             <td class="text-center col-2">
                                 <a href="/survey-list/takeSurvey/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
                                     <i class="bi bi-check-square"></i> Take Survey</a>
