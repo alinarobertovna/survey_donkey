@@ -1,0 +1,59 @@
+<!--
+ * COMP229-015    Group 7
+ * Group Project  Part 4 Final Release
+ * Project Name:  Survey Donkey
+ * 
+ * Members (name/student ID):
+ * Alina Fadeeva – 301249589
+ * Nadia Velikaia – 301244426
+ * Terence Chu – 301220117
+ * Zhihao Yu – 301305633
+ * Akash Arora – 300849838
+ * Nithiyavany Vijai – 301212774
+ * 
+ * File name:     results.ejs
+ * Description:   Survey results page
+-->
+
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+
+<!-- Content for the Survey Results page -->
+<br> <br> <br>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            
+            <h1><%= title %></h1>
+
+            <br>
+            <button onclick="printpage()" class="btn btn-primary">Print Results</button>
+            <br>
+            <br>
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Header Row -->
+                
+                <tr>                    
+                <th rowspan="2" class="text-center col-2">Survey Name</th>
+                <th rowspan="2" class="text-center col-2">Respondents</th>            
+                <th colspan="4" class="text-center col-2">Question 1</th>
+                </tr>
+
+                <tr>
+                <th class="text-center col-2">Opt 1</th>
+                <th class="text-center col-2">Opt 2</th>
+                <th class="text-center col-2">Opt 3</th>
+                <th class="text-center col-2">Opt 4</th>
+                </tr>
+
+                
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<%- include ../partials/bottom_nav.ejs %>
+
+<%- include ../partials/footer.ejs %>
