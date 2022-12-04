@@ -208,3 +208,26 @@ module.exports.processTakeSurveyPage = (req, res, next) => {
         }
     });
 }
+
+//display survey results page
+
+module.exports.displaySurveyResultsPage = (req, res, next) => {
+    let id = req.params.id;
+
+    //this function is not working 
+    //we need to find a solution to display results, so it is just a template - blank page
+    CompletedSurvey.findById(id, (err, completedSurveyList) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            //Show the results page
+            res.render('survey/results', {
+                title: 'Survey Results',
+                //below part is not working
+                CompletedSurveyList: completedSurveyList,
+                displayName: req.user ? req.user.displayName : ''
+            })
+        }
+    });
+}

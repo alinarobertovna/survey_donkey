@@ -37,3 +37,7 @@
     }
     window.addEventListener("load", Start);
 })();
+
+function printpage() {
+    window.print();
+};
