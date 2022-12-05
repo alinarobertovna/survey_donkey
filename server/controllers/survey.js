@@ -25,6 +25,7 @@ let DB = require("../config/db");
 
 //Create a reference to the model
 let Survey = require('../models/survey');
+let ShortAnswerSurvey = require('../models/surveyShortAnswers');
 let CompletedSurvey = require('../models/completedSurvey');
 var ObjectId = require('mongodb').ObjectId;
 
@@ -86,6 +87,7 @@ module.exports.processAddPage = (req, res, next) => {
 
     //Create newSurvey object
     let newSurvey = Survey({
+        "surveyType": req.body.optSurveyType,
         "surveyCreator": req.user.displayName,
         "title": req.body.title,
         "description": req.body.description,
@@ -108,6 +110,50 @@ module.exports.processAddPage = (req, res, next) => {
     });
 }
 
+module.exports.displayAddShortAnswersPage = (req, res, next) => {
+    passport.authenticate("local", (err, user, info) => {
+        if (req.user.userType == "Survey Taker") {
+          req.flash(
+            "VerificationMessage",
+            "Verification Error, This user cannot create a survey!"
+          );
+          return res.redirect("/");
+        }
+        if (req.user.userType == "Survey Creator") {
+          res.render("survey/addShortAnswers", {
+            title: "Add Survey",
+            displayName: req.user ? req.user.displayName : "",
+          });
+        }
+      })(req, res, next);
+}
+
+module.exports.processAddShortAnswersPage = (req, res, next) => {
+    date = new Date(req.body.endDate);
+ 
+    date = date.getTime() + (date.getTimezoneOffset()*60*1000);
+
+    //Create newShortAnswerSurvey object
+    let newShortAnswerSurvey = ShortAnswerSurvey({
+        "surveyType": req.body.optSurveyType,
+        "surveyCreator": req.user.displayName,
+        "title": req.body.title,
+        "description": req.body.description,
+        "endDate": date,
+        "q1": req.body.q1,
+    });
+
+    ShortAnswerSurvey.create(newShortAnswerSurvey, (err, ShortAnswerSurvey) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            //Refresh the survey list
+            res.redirect('/survey-list');
+        }
+    });
+}
+
 module.exports.displayEditSurveyPage = (req, res, next) => {
     let id = req.params.id;
 
@@ -120,7 +166,8 @@ module.exports.displayEditSurveyPage = (req, res, next) => {
             res.render('survey/edit', {
                 title: 'Edit Survey',
                 survey: surveyToEdit,
-                displayName: req.user ? req.user.displayName : ''
+                displayName: req.user ? req.user.displayName : '',
+                surveyType: surveyToEdit.surveyType
             })
         }
     });
@@ -192,12 +239,29 @@ module.exports.displayTakeSurveyPage = (req, res, next) => {
 }
 
 module.exports.processTakeSurveyPage = (req, res, next) => {
+    // console.log(req.body);
+    // console.log(req.params);
+    // console.log(req.query);
 
-    let newCompletedSurvey = CompletedSurvey({
-        "title": req.body.title,
-        "userName": req.body.userName,
-        "answer": req.body.optQ1,
-    });
+    let newCompletedSurvey = CompletedSurvey({});
+
+    if(req.body.surveyType == "Multiple Choice") {
+        newCompletedSurvey = CompletedSurvey({
+            "surveyType": req.body.surveyType,
+            "title": req.body.surveyTitle,
+            "userName": req.body.userName,
+            "q1": req.body.question,
+            "answer": req.body.optQ1,
+        });
+    } else if (req.body.surveyType == "Short Answers") {
+        newCompletedSurvey = CompletedSurvey({
+            "surveyType": req.body.surveyType,
+            "title": req.body.surveyTitle,
+            "userName": req.body.userName,
+            "q1": req.body.question,
+            "answer": req.body.txtResponse,
+        });
+    }
 
     CompletedSurvey.create(newCompletedSurvey, (err, CompletedSurvey) => {
         if (err) {
@@ -210,6 +274,7 @@ module.exports.processTakeSurveyPage = (req, res, next) => {
     });
 }
 
+//display survey results page
 module.exports.displaySurveyResultsPage = (req, res, next) => {
     let id = req.params.id;
     console.log(id);
