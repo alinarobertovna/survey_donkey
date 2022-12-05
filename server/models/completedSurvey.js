@@ -19,11 +19,11 @@ let mongoose  = require('mongoose'); //To get access to the mongoose classes
 
 //Create a model class
 let completedSurveyModel = mongoose.Schema({
+    surveyType: String,
     title: String,
     userName: String,
     q1: String,
     answer: String,
-
 },
 {
     collection: "completedSurveys" 
