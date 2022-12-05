@@ -71,6 +71,5 @@ router.post('/takeSurvey/:id', surveyController.processTakeSurveyPage);
 //GET Route for displaying of the results page - READ operation
 router.get('/results/:id', requireAuth, surveyController.displaySurveyResultsPage);
 
-
 //Build up configuration for the router above and export into one single package, so that app.js knows where to look
 module.exports = router;
