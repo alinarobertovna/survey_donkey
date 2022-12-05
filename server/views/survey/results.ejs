@@ -33,14 +33,16 @@
             <br>
             <table class="table table-bordered table-striped table-hover">
                 
-                <th>User Id</th>
+                <th>Title</th>
                 <th>Respondent</th>
+                <th>Question</th>
                 <th>Answer</th>
 
                 <%CompletedSurveyList.forEach(completedSurvey => {%>
                     <tr>
-                        <th scope="row"><%= completedSurvey._id %></th>
+                        <th scope="row"><%= completedSurvey.title %></th>
                         <td><%= completedSurvey.userName %></td>
+                        <td><%= completedSurvey.q1 %></td>
                         <td><%= completedSurvey.answer %></td>
                     </tr>
                 <%})%>
