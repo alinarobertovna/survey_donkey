@@ -41,3 +41,17 @@
 function printpage() {
     window.print();
 };
+
+// Radio button function
+function is_checked() {
+    var opt1_checked = document.getElementById('optQ1').checked;
+    var opt2_checked = document.getElementById('optQ2').checked;
+    var opt3_checked = document.getElementById('optQ3').checked;
+    var opt4_checked = document.getElementById('optQ4').checked;
+    if (opt1_checked == false && opt2_checked == false && opt3_checked == false && opt4_checked == false){
+      alert('Please select an option');
+      return false;
+    }else{
+      return true;
+    }}
+  

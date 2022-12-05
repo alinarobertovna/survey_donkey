@@ -107,7 +107,7 @@
 @media (max-width: 768px) {
   #hero h1 {
     font-size: 28px;
-    line-height: 36px;
+    line-height: 36px; 
   }
 
   #hero h2 {
@@ -229,8 +229,8 @@
 #logo {
   width: 240px;
   height: 100px;
-  margin-left: -350px;
-  margin-top:-245px;
+  margin-left: -80px;
+  margin-top:-300px;
 }
 
 #land_girl {
