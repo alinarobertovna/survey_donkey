@@ -27,6 +27,7 @@ let DB = require("../config/db");
 let Survey = require('../models/survey');
 let ShortAnswerSurvey = require('../models/surveyShortAnswers');
 let CompletedSurvey = require('../models/completedSurvey');
+var ObjectId = require('mongodb').ObjectId;
 
 module.exports.displaySurveyList = (req, res, next) => { 
     Survey.find((err, surveyList) => { 
@@ -276,21 +277,23 @@ module.exports.processTakeSurveyPage = (req, res, next) => {
 //display survey results page
 module.exports.displaySurveyResultsPage = (req, res, next) => {
     let id = req.params.id;
-
+    console.log(id);
     //this function is not working 
     //we need to find a solution to display results, so it is just a template - blank page
-    CompletedSurvey.findById(id, (err, completedSurveyList) => {
+    //CompletedSurvey.find({"_id": new ObjectId(id)}, (err, completedSurveyList) => {
+    CompletedSurvey.find((err, completedSurveyList) => {
         if (err) {
             console.log(err);
             res.end(err);
         } else {
             //Show the results page
+            console.log(completedSurveyList);
             res.render('survey/results', {
                 title: 'Survey Results',
                 //below part is not working
-                CompletedSurveyList: completedSurveyList,
-                displayName: req.user ? req.user.displayName : ''
-            })
+                CompletedSurveyList: completedSurveyList
+            }); 
+
         }
     });
 }

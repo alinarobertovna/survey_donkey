@@ -32,22 +32,19 @@
             <br>
             <br>
             <table class="table table-bordered table-striped table-hover">
-                <!-- Header Row -->
                 
-                <tr>                    
-                <th rowspan="2" class="text-center col-2">Survey Name</th>
-                <th rowspan="2" class="text-center col-2">Respondents</th>            
-                <th colspan="4" class="text-center col-2">Question 1</th>
-                </tr>
+                <th>User Id</th>
+                <th>Respondent</th>
+                <th>Answer</th>
 
-                <tr>
-                <th class="text-center col-2">Opt 1</th>
-                <th class="text-center col-2">Opt 2</th>
-                <th class="text-center col-2">Opt 3</th>
-                <th class="text-center col-2">Opt 4</th>
-                </tr>
+                <%CompletedSurveyList.forEach(completedSurvey => {%>
+                    <tr>
+                        <th scope="row"><%= completedSurvey._id %></th>
+                        <td><%= completedSurvey.userName %></td>
+                        <td><%= completedSurvey.answer %></td>
+                    </tr>
+                <%})%>
 
-                
             </table>
 
         </div>
