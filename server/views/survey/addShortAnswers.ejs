@@ -29,41 +29,35 @@
             
             <form class="form" method="POST">
 
-                <div class="form-group">
+                <div class="form-group mt-3 mb-3">
                     <fieldset>
-                        <legend>Survey Type</legend>
-                        Please choose a survey type: 
-                        <div>
-                            <input type = "radio" name = "optSurveyType" id = "surveyTypeMultipleChoice" value="Multiple Choice" onclick="location.href='/survey-list/add'">&nbsp;
+                        <legend>Survey Type:</legend>
+                        
+                            <input type = "radio" name = "optSurveyType" id = "surveyTypeMultipleChoice" value="Multiple Choice" checked>&nbsp;
                             <label for="surveyTypeMultipleChoice">Multiple Choice</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                            <input type = "radio" name = "optSurveyType" id = "surveyTypeShortAnswers" value="Short Answers" checked>&nbsp;
+                            <input type = "radio" name = "optSurveyType" id = "surveyTypeShortAnswers" value="Short Answers" onclick="location.href='/survey-list/addShortAnswers'">&nbsp;
                             <label for="surveyTypeShortAnswers">Short Answers</label>
-                        </div>
-                    </fieldset>
-                </div>
-                <br>
+                        </fieldset>
+                    </div>
 
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="titleTextField">Survey Name</label>
                     <input type="text" class="form-control" id="titleTextField" placeholder="Type Survey Name" name="title" required>
                 </div>
-                <br>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="descriptionTextField">Survey Description</label>
                     <input type="text" class="form-control" id="descriptionTextField" placeholder="Type Survey Description" name="description" required>
                 </div>
-                <br>
-                <div class="form-group">
+                <div class="form-group mb-3">
                 <label for="endDate">End Date</label>
                 <input type="date" class="form-control" id="endDate" name="endDate" required>
                 </div>
-                <br>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="q1TextField">Question</label>
                     <input type="text" class="form-control" id="q1TestField" placeholder="Type Question" name="q1" required>
                 </div>
-                <br>
+                
 
                 <br> 
                 <button class="btn btn-primary" type="submit">
