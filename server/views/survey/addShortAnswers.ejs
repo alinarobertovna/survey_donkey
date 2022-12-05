@@ -11,7 +11,7 @@
  * Akash Arora – 300849838
  * Nithiyavany Vijai – 301212774
  * 
- * File name:     add.ejs
+ * File name:     addShortAnswers.ejs
  * Description:   Add survey page
 -->
 
@@ -34,10 +34,10 @@
                         <legend>Survey Type</legend>
                         Please choose a survey type: 
                         <div>
-                            <input type = "radio" name = "optSurveyType" id = "surveyTypeMultipleChoice" value="Multiple Choice" checked>&nbsp;
+                            <input type = "radio" name = "optSurveyType" id = "surveyTypeMultipleChoice" value="Multiple Choice" onclick="location.href='/survey-list/add'">&nbsp;
                             <label for="surveyTypeMultipleChoice">Multiple Choice</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                            <input type = "radio" name = "optSurveyType" id = "surveyTypeShortAnswers" value="Short Answers" onclick="location.href='/survey-list/addShortAnswers'">&nbsp;
+                            <input type = "radio" name = "optSurveyType" id = "surveyTypeShortAnswers" value="Short Answers" checked>&nbsp;
                             <label for="surveyTypeShortAnswers">Short Answers</label>
                         </div>
                     </fieldset>
@@ -64,25 +64,6 @@
                     <input type="text" class="form-control" id="q1TestField" placeholder="Type Question" name="q1" required>
                 </div>
                 <br>
-                <div class="form-group">
-                    <label for="q1Opt1TextField">Option 1</label>
-                    <input type="text" class="form-control" id="q1Opt1TextField" placeholder="Set Option 1" name="q1Opt1" required>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="q1Opt2TextField">Option 2</label>
-                    <input type="text" class="form-control" id="q1Opt2TextField" placeholder="Set Option 2" name="q1Opt2" required>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="q1Opt3TextField">Option 3</label>
-                    <input type="text" class="form-control" id="q1Opt3TextField" placeholder="Set Option 3" name="q1Opt3" required>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="q1Opt4TextField">Option 4</label>
-                    <input type="text" class="form-control" id="q1Opt4TextField" placeholder="Set Option 4" name="q1Opt4" required>
-                </div>
 
                 <br> 
                 <button class="btn btn-primary" type="submit">

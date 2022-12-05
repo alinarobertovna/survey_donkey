@@ -11,14 +11,14 @@
  * Akash Arora – 300849838
  * Nithiyavany Vijai – 301212774
  * 
- * File name:     survey.js
+ * File name:     surveyshortAnswers.js
  * Description:   Model Class / Schema for surveys
 */
 
 let mongoose  = require('mongoose'); //To get access to the mongoose clases
 
 //Create a model class
-let surveyModel = mongoose.Schema({
+let surveyShortAnswersModel = mongoose.Schema({
     //Properties/structure of the DB
     surveyType: String,
     surveyCreator: String,
@@ -26,14 +26,10 @@ let surveyModel = mongoose.Schema({
     description: String,
     endDate: Date,
     q1: String,
-    q1Opt1: String,
-    q1Opt2: String,
-    q1Opt3: String,
-    q1Opt4: String
 },
 {
     collection: "surveys" 
 });
 
 
-module.exports = mongoose.model('Survey', surveyModel);
+module.exports = mongoose.model('ShortAnswerSurveys', surveyShortAnswersModel);

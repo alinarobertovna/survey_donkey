@@ -38,7 +38,6 @@ function requireAuth(req, res, next)
     next();
 }
 
-
 //GET Route for the Surveys List page - this is the READ Operation
 router.get('/', surveyController.displaySurveyList);
 
@@ -47,6 +46,12 @@ router.get('/add',requireAuth, surveyController.displayAddPage);
 
 //POST Route for processing the Add page - CREATE Operation
 router.post('/add',requireAuth, surveyController.processAddPage);
+
+//GET Route for displaying the Add Short Answers page - CREATE Operation
+router.get('/addShortAnswers', requireAuth, surveyController.displayAddShortAnswersPage);
+
+//POST Route for processing the Add Short Answers page - CREATE Operation
+router.post('/addShortAnswers', requireAuth, surveyController.processAddShortAnswersPage);
 
 //GET Route for displaying the Edit page - UPDATE Operation
 //Pass the information (specifically, id) from the surveys list to the edit page
@@ -70,7 +75,6 @@ router.post('/takeSurvey/:id', surveyController.processTakeSurveyPage);
 
 //GET Route for displaying of the results page - READ operation
 router.get('/results/:id', requireAuth, surveyController.displaySurveyResultsPage);
-
 
 //Build up configuration for the router above and export into one single package, so that app.js knows where to look
 module.exports = router;
