@@ -246,9 +246,12 @@
 }
 
 /* Survey List Page */
-#table {
+
+/*#table {
   margin-left: 500px;
+  
 }
+*/
 
 
 #table_title {
@@ -274,3 +277,9 @@
 .message{
   margin-top: 100px;
 }
+
+
+.main-container {margin-bottom: 65px;
+  margin-top: 65px;}
+
+
