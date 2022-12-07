@@ -40,17 +40,17 @@
             <h1><%= title %></h1>
            
             <form class="form" method="POST">
-                <div class="form-group">
+                <div class="form-group mt-3 mb-3">
                     <label for="nameTextField">Survey Title</label>
                     <input type="text" class="form-control" id="nameTextField" placeholder="Survey Title" value="<%= survey.title %>" name="title" required>
                 </div>
-                <br>
-                <div class="form-group">
+               
+                <div class="form-group mb-3">
                     <label for="descriptionTextField">Survey Description</label>
                     <textarea type="text" class="form-control" id="descriptionTextField" placeholder="Type Survey Description" value="<%= survey.description %>" name="description" required>
                     </textarea>
                 </div>
-                <br>
+                
 
                 <!-- To insert a date into the date field, use value="yyyy-mm-dd". This will have to be created by extracting the relevant values from endDate -->
                 <!-- < % (without equal sign) is good for control-flow and does not output a value (per EJS documentation @ https://ejs.co/#:~:text=%3C%25%20%27Scriptlet%27%20tag,whitespace%20after%20it) -->
@@ -62,43 +62,42 @@
                                                                                                  length of the string is 2. If the length of the string is already 2 (for example, 16), no padding
                                                                                                  will be applied. -->
              
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="endDate">End Date</label>
                     <input type="date" class="form-control" id="endDate" value="<%= year + "-" + month + "-" + day%>" name="endDate" required> <!-- Build the value attribute -->
                 </div>
                 
-                <br>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="q1TextField">Question</label>
                     <input type="text" class="form-control" id="q1TestField" placeholder="Type Question" name="q1" value="<%= survey.q1 %>" required>
                 </div>
-                <br>
+                
 
                 <% if(surveyType == 'Multiple Choice') { %>
 
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="q1Opt1TextField"> Option 1 </label>
                         <input type="text" class="form-control" id="q1Opt1TextField" placeholder="Set Option 1" value="<%= survey.q1Opt1 %>" name="q1Opt1" required>
                     </div>
-                    <br>
-                    <div class="form-group">
+                    
+                    <div class="form-group mb-3">
                         <label for="q1Opt2TextField">Option 2</label>
                         <input type="text" class="form-control" id="q1Opt2TextField" placeholder="Set Option 2" value="<%= survey.q1Opt2 %>" name="q1Opt2" required>
                     </div>
-                    <br>
-                    <div class="form-group">
+                    
+                    <div class="form-group mb-3">
                         <label for="q1Opt3TextField">Option 3</label>
                         <input type="text" class="form-control" id="q1Opt3TextField" placeholder="Set Option 3" value="<%= survey.q1Opt3 %>" name="q1Opt3" required>
                     </div>
-                    <br>
-                    <div class="form-group">
+                    
+                    <div class="form-group mb-3">
                         <label for="q1Opt4TextField">Option 4</label>
                         <input type="text" class="form-control" id="q1Opt4TextField" placeholder="Set Option 4" value="<%= survey.q1Opt4 %>" name="q1Opt4" required>
                     </div>
 
                 <% } %>
 
-                <br>
+                
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-edit"></i> Submit</button>
 

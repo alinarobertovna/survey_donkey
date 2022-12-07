@@ -36,48 +36,48 @@
             <h1 class="text-center"><%= survey.title %></h1>
             
             <form class="form" method="POST">
-                <div class="form-group">
+                <div class="form-group mt-3 mb-3">
                     <label for="userNameTextField">Your Name:</label>
                     <input type="text" class="form-control" id="userNameTextField" placeholder="User Name" name="userName" required>
                 </div>
-                <br>
-                <div class="form-group">
+                
+                <div class="form-group mb-3">
                     <label for="q1TextField">Question 1: <%= survey.q1 %></label>
                 </div>
-                <br>
+               
 
                 <% if(survey.surveyType == 'Multiple Choice') { %>
-                
-                    <div class="form-group">
+
+                    <div class="form-group mb-3">
                         <input type = "radio" name = "optQ1" id = "optQ1" value="<%= survey.q1Opt1 %>" required>
+
                         <label for="optQ1"><%= survey.q1Opt1 %></label>
                     </div>
-                    <br>
-                    <div class="form-group">
+                    
+                    <div class="form-group mb-3">
                         <input type = "radio" name = "optQ1" id = "optQ2" value="<%= survey.q1Opt2 %>">
                         <label for="optQ2"><%= survey.q1Opt2 %></label>
                     </div>
-                    <br>
-                    <div class="form-group">
+                    
+                    <div class="form-group mb-3">
                         <input type = "radio" name = "optQ1" id = "optQ3" value="<%= survey.q1Opt3 %>">
                         <label for="optQ3"><%= survey.q1Opt3 %></label>
                     </div>
-                    <br>
-                    <div class="form-group">
+                    
+                    <div class="form-group mb-3">
                         <input type = "radio" name = "optQ1" id = "optQ4" value="<%= survey.q1Opt4 %>">
                         <label for="optQ4"><%= survey.q1Opt4 %></label>
                     </div>
 
                 <% } else if (survey.surveyType == 'Short Answers') { %>
 
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <textarea rows="5" cols="84" name="txtResponse" placeholder="Please enter your answer here"></textarea><br>
                     </div>
 
                 <% } %>
 
-                <br>
-
+                
                 <!-- Hidden Fields -->
                 <!-- These hidden fields will send the relevant data to the controller to write to the DB -->
                 <input type="hidden" id="surveyType" name="surveyType" value="<%= survey.surveyType %>">
