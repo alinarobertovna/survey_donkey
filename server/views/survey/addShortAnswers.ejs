@@ -32,13 +32,19 @@
                 <div class="form-group mt-3 mb-3">
                     <fieldset>
                         <legend>Survey Type</legend>
-                        
-                            <input type = "radio" name = "optSurveyType" id = "surveyTypeMultipleChoice" value="Multiple Choice" onclick="location.href='/survey-list/add'">&nbsp;
-                            <label for="surveyTypeMultipleChoice">Multiple Choice</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <select name="optSurveyType" class="form-control custom-select is-valid"  id="question-type">
+                            <option value="Multiple Choice">Multiple choice</option>
+                            <option value="Short Answers" selected>Short answer</option>
+                        </select>
+                        <!-- <input type="radio" name="optSurveyType" id="surveyTypeMultipleChoice"
+                            value="Multiple Choice" checked>&nbsp;
+                        <label for="surveyTypeMultipleChoice">Multiple
+                            Choice</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                            <input type = "radio" name = "optSurveyType" id = "surveyTypeShortAnswers" value="Short Answers" checked>&nbsp;
-                            <label for="surveyTypeShortAnswers">Short Answers</label>
-                        
+                        <input type="radio" name="optSurveyType" id="surveyTypeShortAnswers"
+                            value="Short Answers" onclick="location.href='/survey-list/addShortAnswers'">&nbsp;
+                        <label for="surveyTypeShortAnswers">Short Answers</label> -->
+
                     </fieldset>
                 </div>
                 
@@ -72,7 +78,21 @@
         </div>
     </div>
 </div>
+<script>
+    // Get a reference to the selectbox
+    var selectbox = document.getElementById('question-type');
 
+    // Add an event listener for the 'change' event
+    selectbox.addEventListener('change', function() {
+      // Get the value of the selected option
+      var value = this.value;
+
+      // Redirect to the appropriate page based on the selected value
+      if (value === 'Multiple Choice') {
+        window.location.href = '/survey-list/add';
+      } 
+    });
+  </script>
 
 <%- include ../partials/bottom_nav.ejs %>
 
