@@ -317,14 +317,24 @@ module.exports.displaySurveyResultsPage = (req, res, next) => {
               }
             }
             sum = op1List + op2List + op3List + op4List;
+            let per1,per2,per3,per4 =0;
+            per1 = op1List/sum;
+            per1 = Math.round(per1 * 100);
+            console.log(per1)
+            per2 = op2List/sum;
+            per2 = Math.round(per2 * 100);
+            per3 = op3List/sum;
+            per3 = Math.round(per3 * 100);
+            per4 = op4List/sum;
+            per4 = Math.round(per4 * 100);
             res.render("survey/results", {
               title: "Multipe Choice Results",
               CompletedSurveyList: completedSurveyList,
               optionList: optionList,
-              op1List: op1List,
-              op2List: op2List,
-              op3List: op3List,
-              op4List: op4List,
+              per1: per1,
+              per2: per2,
+              per3: per3,
+              per4: per4,
               sum: sum,
             });
           }
