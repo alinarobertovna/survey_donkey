@@ -17,89 +17,116 @@
 
 <%- include ../partials/header.ejs %>
 
-<%- include ../partials/main_nav.ejs %>
+    <%- include ../partials/main_nav.ejs %>
 
-<!-- Content for the Add page -->
-<br> <br> <br>
-<div class="container">
-    <div class="row">
-        <div class="offset-md-3 col-md-6">
+        <!-- Content for the Add page -->
+        <br> <br> <br>
+        <div class="container justify-content-center">
+            <div class="row">
+                <div class="offset-md-3 col-md-6">
 
-            <h1 class="text-center">Create a Survey</h1>
-            
-            <form class="form" method="POST">
+                    <h1 class="text-center">Create a Survey</h1>
 
-                <div class="form-group mt-3 mb-3">
-                    <fieldset>
-                        <legend>Survey Type</legend>
-                        
-                            <input type = "radio" name = "optSurveyType" id = "surveyTypeMultipleChoice" value="Multiple Choice" checked>&nbsp;
-                            <label for="surveyTypeMultipleChoice">Multiple Choice</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <form class="form" method="POST">
 
-                            <input type = "radio" name = "optSurveyType" id = "surveyTypeShortAnswers" value="Short Answers" onclick="location.href='/survey-list/addShortAnswers'">&nbsp;
-                            <label for="surveyTypeShortAnswers">Short Answers</label>
-                        
-                    </fieldset>
-                </div>                
+                        <div class="form-group mt-3 mb-3">
+                            <fieldset>
+                                <legend>Survey Type</legend>
+                                <select name="optSurveyType" class="form-control custom-select is-valid"  id="question-type">
+                                    <option value="Multiple Choice">Multiple choice</option>
+                                    <option value="Short Answers" >Short answer</option>
+                                </select>
+                                <!-- <input type="radio" name="optSurveyType" id="surveyTypeMultipleChoice"
+                                    value="Multiple Choice" checked>&nbsp;
+                                <label for="surveyTypeMultipleChoice">Multiple
+                                    Choice</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                <div class="form-group mb-3">
-                    <label for="titleTextField">Survey Name</label>
-                    <input type="text" class="form-control" id="titleTextField" placeholder="Type Survey Name" name="title" required>
+                                <input type="radio" name="optSurveyType" id="surveyTypeShortAnswers"
+                                    value="Short Answers" onclick="location.href='/survey-list/addShortAnswers'">&nbsp;
+                                <label for="surveyTypeShortAnswers">Short Answers</label> -->
+
+                            </fieldset>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="titleTextField">Survey Name</label>
+                            <input type="text" class="form-control" id="titleTextField" placeholder="Type Survey Name"
+                                name="title" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="descriptionTextField">Survey Description</label>
+                            <textarea type="text" cols="50" class="form-control" id="descriptionTextField"
+                                placeholder="Type Survey Description" name="description" required></textarea>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="endDate">End Date</label>
+                            <input type="date" class="form-control" id="endDate" name="endDate" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="q1TextField">Question</label>
+                            <input type="text" class="form-control" id="q1TestField" placeholder="Type Question"
+                                name="q1" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="q1Opt1TextField">Option 1</label>
+                            <input type="text" class="form-control" id="q1Opt1TextField" placeholder="Set Option 1"
+                                name="q1Opt1" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="q1Opt2TextField">Option 2</label>
+                            <input type="text" class="form-control" id="q1Opt2TextField" placeholder="Set Option 2"
+                                name="q1Opt2" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="q1Opt3TextField">Option 3</label>
+                            <input type="text" class="form-control" id="q1Opt3TextField" placeholder="Set Option 3"
+                                name="q1Opt3" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="q1Opt4TextField">Option 4</label>
+                            <input type="text" class="form-control" id="q1Opt4TextField" placeholder="Set Option 4"
+                                name="q1Opt4" required>
+                        </div>
+
+
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-edit"></i> Submit</button>
+
+                        <a href="/survey-list" class="btn btn-warning">
+                            <i class="fas fa-undo"></i> Cancel</a>
+                    </form>
+                    <br>
+
+                    <br>
+
+                    <br>
+                    <div></div>
                 </div>
-                
-                <div class="form-group mb-3">
-                    <label for="descriptionTextField">Survey Description</label>
-                    <textarea type="text" cols="50" class="form-control" id="descriptionTextField" placeholder="Type Survey Description" name="description" required></textarea>
-                </div>
-                
-                <div class="form-group mb-3">
-                <label for="endDate">End Date</label>
-                <input type="date" class="form-control" id="endDate" name="endDate" required>
-                </div>
-                
-                <div class="form-group mb-3">
-                    <label for="q1TextField">Question</label>
-                    <input type="text" class="form-control" id="q1TestField" placeholder="Type Question" name="q1" required>
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="q1Opt1TextField">Option 1</label>
-                    <input type="text" class="form-control" id="q1Opt1TextField" placeholder="Set Option 1" name="q1Opt1" required>
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="q1Opt2TextField">Option 2</label>
-                    <input type="text" class="form-control" id="q1Opt2TextField" placeholder="Set Option 2" name="q1Opt2" required>
-                </div>
-                
-                <div class="form-group mb-3">
-                    <label for="q1Opt3TextField">Option 3</label>
-                    <input type="text" class="form-control" id="q1Opt3TextField" placeholder="Set Option 3" name="q1Opt3" required>
-                </div>
-                
-                <div class="form-group mb-3">
-                    <label for="q1Opt4TextField">Option 4</label>
-                    <input type="text" class="form-control" id="q1Opt4TextField" placeholder="Set Option 4" name="q1Opt4" required>
-                </div>
-
-                
-                <button class="btn btn-primary" type="submit">
-                    <i class="fas fa-edit"></i> Submit</button>
-
-                    <a href="/survey-list" class="btn btn-warning">
-                        <i class="fas fa-undo"></i> Cancel</a>
-            </form>
-            <br>
-            
-            <br>
-            
-            <br>
-            <div></div>
+            </div>
         </div>
-    </div>
-</div>
+        <script>
+            // Get a reference to the selectbox
+            var selectbox = document.getElementById('question-type');
+        
+            // Add an event listener for the 'change' event
+            selectbox.addEventListener('change', function() {
+              // Get the value of the selected option
+              var value = this.value;
+        
+              // Redirect to the appropriate page based on the selected value
+              if (value === 'Short Answers') {
+                window.location.href = '/survey-list/addShortAnswers';
+              } 
+            });
+          </script>
 
+        <%- include ../partials/bottom_nav.ejs %>
 
-<%- include ../partials/bottom_nav.ejs %>
-
-<%- include ../partials/footer.ejs %>
+            <%- include ../partials/footer.ejs %>
