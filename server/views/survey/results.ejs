@@ -26,12 +26,10 @@
         <div class="offset-md-3 col-md-6">
             
             <h1><%= title %></h1>
-
-            <br>
-            <button onclick="printpage()" class="btn btn-primary">Print Results</button>
-            <br>
-            <br>
-
+            <br>        
+            <button onclick="printpage()" class="btn btn-primary">Print Results</button></th>
+            <button onclick="emailCurrentPage()" class="btn btn-primary float-end">Email page</button></th>
+            <br><br>
             <% if(title == 'Multipe Choice Results') { %>
             <table class="table table-bordered table-striped table-hover">
                 
@@ -87,7 +85,8 @@
                     <%})%>
                 </table>
           <% } %>
-        </div>
+          <br><br>
+       </div>
     </div>
 </div>
 
