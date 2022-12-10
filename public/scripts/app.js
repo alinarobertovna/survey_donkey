@@ -41,3 +41,7 @@
 function printpage() {
     window.print();
 };
+
+function emailCurrentPage() {
+    window.location.href = "mailto:?subject=" + document.title + "&body=" + encodeURI(document.location);
+}
