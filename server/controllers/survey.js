@@ -328,7 +328,7 @@ module.exports.displaySurveyResultsPage = (req, res, next) => {
             per4 = op4List/sum;
             per4 = Math.round(per4 * 100);
             res.render("survey/results", {
-              title: "Multipe Choice Results",
+              title: "Multiple Choice Results",
               CompletedSurveyList: completedSurveyList,
               optionList: optionList,
               per1: per1,
