@@ -33,7 +33,7 @@
             <br>
 
             <% if(title == 'Multiple Choice Results') { %>
-            <table class="table table-bordered table-striped table-hover">
+            <table class="table table-bordered table-striped table-hover mt-3">
                 
                 <th>Title</th>
                 <th>Respondent</th>
@@ -49,19 +49,19 @@
                     </tr>
                 <%})%>
                 <h3>Answers Distribution</h3>
-                <table class="table table-bordered table-striped table-hover ">
+                <table class="table table-bordered table-striped table-hover mt-3">
                     
                     <%optionList.forEach(optionList => {%>
-                    <th><%= optionList.q1Opt1 %></th>
-                    <th><%= optionList.q1Opt2 %></th>
-                    <th><%= optionList.q1Opt3 %></th>
-                    <th><%= optionList.q1Opt4 %></th>
+                    <th class="text-center col-2"><%= optionList.q1Opt1 %></th>
+                    <th class="text-center col-2"><%= optionList.q1Opt2 %></th>
+                    <th class="text-center col-2"><%= optionList.q1Opt3 %></th>
+                    <th class="text-center col-2"><%= optionList.q1Opt4 %></th>
                     
                     <tr>
-                        <td><%= per1 %>&nbsp;<i class="fas fa-percent"></i></th>
-                        <td><%= per2 %>&nbsp;<i class="fas fa-percent"></i></td>
-                        <td><%= per3 %>&nbsp;<i class="fas fa-percent"></i></td>
-                        <td><%= per4 %>&nbsp;<i class="fas fa-percent"></i></td>
+                        <td class="text-center col-2"><%= per1 %>&nbsp;<i class="fas fa-percent"></i></td>
+                        <td class="text-center col-2"><%= per2 %>&nbsp;<i class="fas fa-percent"></i></td>
+                        <td class="text-center col-2"><%= per3 %>&nbsp;<i class="fas fa-percent"></i></td>
+                        <td class="text-center col-2"><%= per4 %>&nbsp;<i class="fas fa-percent"></i></td>
                     </tr>
                     <%})%>
                     
@@ -70,7 +70,7 @@
             <% } %>
 
               <% if(title == 'Short Answers Results') { %>
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-bordered table-striped table-hover mt-3">
                 
                     <th>Title</th>
                     <th>Respondent</th>
