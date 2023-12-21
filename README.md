@@ -36,7 +36,7 @@ Install project dependencies:
 <pre>npm install</pre>
 
 Start the server:
-<pre>npm start</pre>
+<pre>node server.js</pre>
 
 Open your web browser and visit http://localhost:3000 to access Survey Donkey locally.
 
